@@ -1,0 +1,124 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+
+// Composite pass: converts sRGB-blended gaussian splat accumulation to linear
+// for proper integration with UE's linear SceneColor buffer.
+//
+// Gaussian splatting trains and evaluates colors in sRGB space. Alpha blending
+// must happen in sRGB space to produce correct results. The splat rendering pass
+// writes sRGB premultiplied-alpha colors to an intermediate render target.
+// This composite pass un-premultiplies, converts sRGB→linear, re-premultiplies,
+// and blends the result onto SceneColor.
+
+#include "/Engine/Public/Platform.ush"
+
+Texture2D IntermediateTexture;
+SamplerState IntermediateSampler;
+uint CompensateUEFilmic;
+float ViewPreExposure;
+float CompositeBrightness;
+float2 SourceTextureSize;
+float2 SourceRectMin;
+float2 SourceRectSize;
+float2 DestinationRectMin;
+float2 DestinationRectSize;
+uint CompositeAfterTonemap;
+
+// Attempt to invert UE's ACES filmic tone curve so that display-ready gaussian
+// splat colors survive tone mapping unchanged.  Uses the Narkowicz ACES fit
+// (same curve UE's default tone mapper approximates) and solves the quadratic
+// analytically.  Without this, already-display-ready sRGB colours appear
+// over-saturated after the engine applies its S-curve.
+float3 InverseACESTonemap(float3 color)
+{
+	// Narkowicz ACES fit: y = clamp((x*(a*x+b)) / (x*(c*x+d)+e))
+	float a = 2.51;
+	float b = 0.03;
+	float c = 2.43;
+	float d = 0.59;
+	float e = 0.14;
+
+	// Solve (a - y*c)*t^2 + (b - y*d)*t - y*e = 0  for t (pre-tonemap value)
+	color = clamp(color, 0.0, 0.99);  // avoid singularities near 1.0
+	float3 A = a - color * c;
+	float3 B = b - color * d;
+	float3 C = -color * e;
+
+	return (-B + sqrt(max(B * B - 4.0 * A * C, 0.0))) / (2.0 * A);
+}
+
+struct FCompositeVSOutput
+{
+	float4 Position : SV_POSITION;
+};
+
+// Full-screen triangle: 3 vertices cover the entire screen
+FCompositeVSOutput MainVS(uint VertexId : SV_VertexID)
+{
+	FCompositeVSOutput Output;
+	float2 UV = float2((VertexId << 1) & 2, VertexId & 2);
+	Output.Position = float4(UV * 2.0 - 1.0, 0.0, 1.0);
+	return Output;
+}
+
+float4 MainPS(FCompositeVSOutput Input) : SV_Target0
+{
+	float4 srgbAccum;
+	if (CompositeAfterTonemap != 0u)
+	{
+		// Post processing can upscale the destination between PostOpaque and
+		// Tonemap. Map the final output rectangle back into the source view.
+		float2 destinationUV =
+			(Input.Position.xy - DestinationRectMin) / max(DestinationRectSize, 1.0);
+		float2 sourcePixel = SourceRectMin + destinationUV * SourceRectSize;
+		float2 sourceUV = sourcePixel / max(SourceTextureSize, 1.0);
+		srgbAccum = IntermediateTexture.SampleLevel(IntermediateSampler, sourceUV, 0);
+	}
+	else
+	{
+		// Immediate SceneColor composition is a 1:1 pixel mapping.
+		int2 PixelPos = int2(Input.Position.xy);
+		srgbAccum = IntermediateTexture.Load(int3(PixelPos, 0));
+	}
+
+	// Early out for fully transparent pixels (no splat contribution)
+	if (srgbAccum.a <= 0.0)
+	{
+		discard;
+	}
+
+	// The intermediate already contains display-referred, premultiplied sRGB.
+	// After UE has tonemapped the opaque scene, pass it through directly. This
+	// mirrors the observable LCC color contract without copying its private
+	// Separate Translucency implementation.
+	if (CompositeAfterTonemap != 0u)
+	{
+		return float4(srgbAccum.rgb * max(CompositeBrightness, 0.0), srgbAccum.a);
+	}
+
+	// Un-premultiply to recover the actual composited sRGB color
+	float3 srgbColor = srgbAccum.rgb / srgbAccum.a;
+
+	// Match PlayCanvas v2.21's decodeGamma(), which is pow(color, 2.2).
+	// SuperSplat's default linear tonemap at exposure 1 then applies the inverse
+	// 1/2.2 output power, so this round trip preserves its displayed values.
+	float3 linearColor = pow(max(srgbColor, 0.0), 2.2);
+
+	// Apply inverse ACES tone curve so that UE's tone mapper maps us back to
+	// the intended display color.  Without this, the ACES S-curve boosts
+	// saturation and contrast of our already-display-ready splat colours.
+	if (CompensateUEFilmic != 0u)
+	{
+		linearColor = InverseACESTonemap(linearColor);
+	}
+
+	// SceneColor is stored in pre-exposed space. Applying the view factor keeps
+	// Gaussian colors consistent with the rest of the scene before tonemapping.
+	linearColor *= max(ViewPreExposure, 1e-6) * max(CompositeBrightness, 0.0);
+
+	// Re-premultiply with accumulated alpha
+	float3 linearPremultiplied = linearColor * srgbAccum.a;
+
+	// Output: premultiplied linear color with accumulated alpha
+	// Blend state: result = src + dst * (1 - srcAlpha)
+	return float4(linearPremultiplied, srgbAccum.a);
+}

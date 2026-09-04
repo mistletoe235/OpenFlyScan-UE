@@ -1,0 +1,45 @@
+{
+  "FileVersion": 3,
+  "EngineAssociation": "5.5",
+  "Category": "Simulation",
+  "Description": "OpenFlySplat Gaussian-splatting runtime and mobile flight-stack bridge for Unreal Engine 5.5.",
+  "Modules": [
+    {
+      "Name": "OpenFlySplatUE",
+      "Type": "Runtime",
+      "LoadingPhase": "Default",
+      "AdditionalDependencies": [
+        "Core",
+        "CoreUObject",
+        "Engine"
+      ]
+    }
+  ],
+  "Plugins": [
+    {
+      "Name": "NanoGS",
+      "Enabled": true
+    },
+    {
+      "Name": "AirSim",
+      "Enabled": true
+    },
+    {
+      "Name": "PythonScriptPlugin",
+      "Enabled": true,
+      "TargetAllowList": [
+        "Editor"
+      ]
+    },
+    {
+      "Name": "EditorScriptingUtilities",
+      "Enabled": true,
+      "TargetAllowList": [
+        "Editor"
+      ]
+    }
+  ],
+  "TargetPlatforms": [
+    "Linux"
+  ]
+}

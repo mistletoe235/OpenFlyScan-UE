@@ -1,0 +1,48 @@
+# Unreal build and editor output
+/Binaries/
+/Build/
+/DerivedDataCache/
+/Intermediate/
+/Saved/
+/Plugins/*/Binaries/
+/Plugins/*/Intermediate/
+/Plugins/*/Saved/
+
+# Generated Gaussian data and local input
+/Content/NanoGSData/
+/Content/NanoGS/Template/ActiveScene_TreeSource.uasset
+/Data/
+*.ply
+*.rad
+*.radc
+*.ngsp
+*.ngst
+*.ngstree
+
+# Locally built Spark helper
+/Tools/NanoGSTreeBuilder/build/
+/Tools/NanoGSTreeBuilder/spark-src/
+
+# Release products
+/Artifacts/
+/Packages/
+*.zip
+*.tar
+*.tar.gz
+*.tar.zst
+
+# Python and IDE state
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+.idea/
+.vscode/
+*.sln
+*.suo
+*.code-workspace
+
+# OS noise
+.DS_Store
+Thumbs.db

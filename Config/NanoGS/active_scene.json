@@ -1,0 +1,111 @@
+{
+  "schema": "nanogs.active_scene.v1",
+  "version": 1,
+  "source_ply": "Data/scene.ply",
+  "page_points": 65536,
+  "crop": {
+    "mode": "none",
+    "config": null,
+    "tail_quantile": 0.02,
+    "z_tail_quantile": 0.001,
+    "protect_half": "none"
+  },
+  "unreal": {
+    "source_asset_path": "/Game/NanoGS/Template/ActiveScene_TreeSource",
+    "target_level_path": "/Game/NanoGS/Template/NanoGS_Runtime",
+    "actor_label": "NanoGS_ActiveScene",
+    "transform": {
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        -1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "component": {
+      "sh_order": 3,
+      "opacity_scale": 1.0,
+      "splat_scale": 1.0,
+      "tree_lod_splat_budget": 10000000,
+      "tree_lod_progressive_splat_budget": 4000000,
+      "tree_lod_detail_scale": 3.0,
+      "force_full_detail_lod0": false
+    },
+    "player_start": {
+      "enabled": true,
+      "label": "NanoGS_Active_PlayerStart",
+      "location": [
+        0.0,
+        0.0,
+        50.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "xy_mode": "auto_open",
+      "height_above_ground_cm": 50.0
+    },
+    "collision_floor": {
+      "enabled": true,
+      "label": "NanoGS_Active_CollisionFloor",
+      "location": [
+        0.0,
+        0.0,
+        -50.0
+      ],
+      "scale": [
+        2000.0,
+        2000.0,
+        1.0
+      ],
+      "hidden_in_game": true,
+      "hidden_in_editor": true,
+      "margin": 1.1,
+      "thickness_cm": 20.0,
+      "below_ground_cm": 2.0
+    },
+    "ground": {
+      "mode": "auto",
+      "orientation_mode": "auto_vertical",
+      "sample_points": 500000,
+      "chunk_points": 262144,
+      "grid_size": 48,
+      "minimum_cell_points": 12,
+      "cell_low_quantile": 0.1,
+      "bounds_tail_quantile": 0.001,
+      "analysis_tail_quantile": 0.02,
+      "mode_bin_cm": 50.0,
+      "anchor_max_delta_cm": 300.0,
+      "clearance_height_cm": 300.0,
+      "edge_margin_fraction": 0.15,
+      "center_bias": 0.15,
+      "spawn_support_quantile": 0.75,
+      "spawn_max_ground_delta_cm": 100.0,
+      "spawn_min_ground_alpha": 0.5,
+      "clearance_radius_cm": 350.0,
+      "observer_offset_xy_cm": [
+        -600.0,
+        200.0
+      ],
+      "flat_spawn": {
+        "enabled": true,
+        "camera_offset_cm": [
+          -1200,
+          300,
+          800
+        ]
+      }
+    }
+  }
+}

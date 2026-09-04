@@ -1,0 +1,431 @@
+#include "/Engine/Public/Platform.ush"
+
+#ifndef THREADGROUP_SIZE
+#define THREADGROUP_SIZE 256
+#endif
+
+#define FRONTIER_BLOCK_FLAG 0x80000000u
+#define FRONTIER_TERMINAL_FLAG 0x40000000u
+#define FRONTIER_TYPE_MASK 0xc0000000u
+#define FRONTIER_BLOCK_ID_MASK 0x7fffu
+#define FRONTIER_LOCAL_MASK 0xffffu
+#define TREE_NODE_INTERNAL_FLAG (1u << 16u)
+#define TREE_NODE_BLOCK_PROXY_FLAG (1u << 18u)
+// CalcViewData reserves the high bit of an active physical index to select the
+// Spark LoD-parent opacity/kernel contract.  The CPU frontier builder applies
+// the same tag in NanoGSPagedRenderData.cpp.  Keep the GPU frontier bit-for-bit
+// compatible: an internal node may be terminal for the current pixel threshold,
+// but it is still a generated LoD parent rather than an exact source leaf.
+#define TREE_LOD_PARENT_INDEX_BIT 0x80000000u
+
+struct FTreeGPUNode
+{
+	float4 CenterAndSupportRadius;
+	uint FirstChild;
+	uint ChildCountAndFlags;
+	uint FeatureRadiusBits;
+	uint PackedPageAddress;
+};
+
+StructuredBuffer<FTreeGPUNode> TreeNodes;
+StructuredBuffer<FTreeGPUNode> BlockNodes;
+StructuredBuffer<uint> BlockResidency;
+StructuredBuffer<uint> PageResidency;
+StructuredBuffer<uint> InputFrontier;
+StructuredBuffer<uint> InputPhysicalIndices;
+StructuredBuffer<uint> InputCountAndOverflow;
+RWStructuredBuffer<uint> OutputFrontier;
+RWStructuredBuffer<uint> OutputPhysicalIndices;
+RWStructuredBuffer<uint> OutputCountAndOverflow;
+RWStructuredBuffer<uint> IndirectDispatchArgs;
+RWStructuredBuffer<uint> RequestedBlocks;
+RWStructuredBuffer<uint> RequestedBlockBits;
+RWStructuredBuffer<uint> RequestedPages;
+RWStructuredBuffer<uint> RequestedPageBits;
+float3 ViewOriginLocal;
+float ProjectionScale;
+float SplitThresholdPixels;
+uint AllowThresholdTerminalization;
+uint OutputCapacity;
+uint BlockRequestCapacity;
+uint BlockAddressCapacity;
+uint PageRequestCapacity;
+uint PageAddressCapacity;
+
+[numthreads(1, 1, 1)]
+void PrepareCS(uint3 DispatchThreadId : SV_DispatchThreadID)
+{
+	const uint InputCount = min(InputCountAndOverflow[0], OutputCapacity);
+	OutputCountAndOverflow[0] = InputCount;
+	OutputCountAndOverflow[1] = 0u;
+	OutputCountAndOverflow[2] = 0u;
+	OutputCountAndOverflow[3] = 0u;
+	RequestedBlocks[0] = 0u;
+	RequestedPages[0] = 0u;
+	IndirectDispatchArgs[0] = (InputCount + THREADGROUP_SIZE - 1u) / THREADGROUP_SIZE;
+	IndirectDispatchArgs[1] = 1u;
+	IndirectDispatchArgs[2] = 1u;
+}
+
+void RecordBlock(uint BlockId)
+{
+	if (BlockId >= BlockAddressCapacity)
+	{
+		InterlockedOr(OutputCountAndOverflow[1], 1u);
+		return;
+	}
+	uint WasRequested = 0u;
+	InterlockedCompareExchange(RequestedBlockBits[BlockId], 0u, 1u, WasRequested);
+	if (WasRequested != 0u)
+	{
+		return;
+	}
+	uint RequestIndex = 0u;
+	InterlockedAdd(RequestedBlocks[0], 1u, RequestIndex);
+	if (RequestIndex < BlockRequestCapacity)
+	{
+		RequestedBlocks[RequestIndex + 1u] = BlockId;
+	}
+	else
+	{
+		InterlockedOr(OutputCountAndOverflow[1], 1u);
+	}
+}
+
+void RequestMissingBlock(uint BlockId)
+{
+	InterlockedOr(OutputCountAndOverflow[3], 1u);
+	RecordBlock(BlockId);
+}
+
+void RecordPage(uint PageId)
+{
+	if (PageId >= PageAddressCapacity)
+	{
+		InterlockedOr(OutputCountAndOverflow[2], 1u);
+		return;
+	}
+	uint WasRequested = 0u;
+	InterlockedCompareExchange(RequestedPageBits[PageId], 0u, 1u, WasRequested);
+	if (WasRequested != 0u)
+	{
+		return;
+	}
+	uint RequestIndex = 0u;
+	InterlockedAdd(RequestedPages[0], 1u, RequestIndex);
+	if (RequestIndex < PageRequestCapacity)
+	{
+		RequestedPages[RequestIndex + 1u] = PageId;
+	}
+	else
+	{
+		InterlockedOr(OutputCountAndOverflow[1], 1u);
+	}
+}
+
+void RequestMissingPage(uint PageId)
+{
+	InterlockedOr(OutputCountAndOverflow[2], 1u);
+	RecordPage(PageId);
+}
+
+uint EncodeBlockNode(uint BlockId, uint LocalNodeIndex)
+{
+	return FRONTIER_BLOCK_FLAG | ((BlockId & FRONTIER_BLOCK_ID_MASK) << 16u) |
+		(LocalNodeIndex & FRONTIER_LOCAL_MASK);
+}
+
+void WritePageAddress(uint OutputIndex, uint EncodedNodeIndex, uint PackedPageAddress, bool IsLeaf)
+{
+	const uint PageId = PackedPageAddress >> 16u;
+	const uint PageLocal = PackedPageAddress & 0xffffu;
+	const bool PageResident = PageId < PageAddressCapacity && PageResidency[PageId] != 0xffffffffu;
+	RecordPage(PageId);
+	if (!PageResident)
+	{
+		RequestMissingPage(PageId);
+	}
+	OutputFrontier[OutputIndex] = IsLeaf
+		? FRONTIER_TERMINAL_FLAG | PackedPageAddress
+		: EncodedNodeIndex;
+	OutputPhysicalIndices[OutputIndex] = PageResident
+		? (PageResidency[PageId] + PageLocal) | (IsLeaf ? 0u : TREE_LOD_PARENT_INDEX_BIT)
+		: 0u;
+}
+
+void WriteOutputNode(uint OutputIndex, uint EncodedNodeIndex, FTreeGPUNode Node)
+{
+	const bool IsTerminalLeaf =
+		(Node.ChildCountAndFlags & (TREE_NODE_INTERNAL_FLAG | TREE_NODE_BLOCK_PROXY_FLAG)) == 0u;
+	WritePageAddress(OutputIndex, EncodedNodeIndex, Node.PackedPageAddress, IsTerminalLeaf);
+}
+
+groupshared uint GroupExpansionPrefix[THREADGROUP_SIZE];
+groupshared uint GroupExpansionBase;
+groupshared uint GroupExpansionGranted;
+
+[numthreads(THREADGROUP_SIZE, 1, 1)]
+void SplitCS(
+	uint3 DispatchThreadId : SV_DispatchThreadID,
+	uint3 GroupThreadId : SV_GroupThreadID)
+{
+	const uint InputIndex = DispatchThreadId.x;
+	const uint InputCount = min(InputCountAndOverflow[0], OutputCapacity);
+	const bool IsActive = InputIndex < InputCount;
+	const bool CanGrowFrontier = InputCount < OutputCapacity && InputCountAndOverflow[1] == 0u;
+	uint EncodedNodeIndex = 0u;
+	uint BlockId = 0u;
+	uint BlockBase = 0u;
+	FTreeGPUNode Node;
+	bool HasNode = false;
+	bool IsBlockNode = false;
+	bool IsTerminal = false;
+	bool IsBlockProxy = false;
+	bool WantsMoreDetail = false;
+	bool ChildrenResident = false;
+	bool ReplaceProxyWithRoot = false;
+	bool MissingBlock = false;
+	uint ProxyBlockId = 0u;
+	uint ExtraCount = 0u;
+
+	if (IsActive)
+	{
+		EncodedNodeIndex = InputFrontier[InputIndex];
+		IsTerminal = (EncodedNodeIndex & FRONTIER_TYPE_MASK) == FRONTIER_TERMINAL_FLAG;
+		if (!IsTerminal)
+		{
+			IsBlockNode = (EncodedNodeIndex & FRONTIER_BLOCK_FLAG) != 0u;
+			uint NodeIndex = EncodedNodeIndex;
+			if (IsBlockNode)
+			{
+				BlockId = (EncodedNodeIndex >> 16u) & FRONTIER_BLOCK_ID_MASK;
+				const uint LocalNodeIndex = EncodedNodeIndex & FRONTIER_LOCAL_MASK;
+				if (BlockId >= BlockAddressCapacity || BlockResidency[BlockId] == 0xffffffffu)
+				{
+					RequestMissingBlock(BlockId);
+					MissingBlock = true;
+				}
+				else
+				{
+					BlockBase = BlockResidency[BlockId];
+					NodeIndex = BlockBase + LocalNodeIndex;
+				}
+			}
+			if (!MissingBlock)
+			{
+				if (IsBlockNode)
+				{
+					Node = BlockNodes[NodeIndex];
+				}
+				else
+				{
+					Node = TreeNodes[NodeIndex];
+				}
+				HasNode = true;
+				const uint ChildCount = Node.ChildCountAndFlags & 0xffffu;
+				const bool IsInternal = (Node.ChildCountAndFlags & TREE_NODE_INTERNAL_FLAG) != 0u;
+				IsBlockProxy = (Node.ChildCountAndFlags & TREE_NODE_BLOCK_PROXY_FLAG) != 0u;
+				const float Distance = max(length(Node.CenterAndSupportRadius.xyz - ViewOriginLocal), 1.0f);
+				const float ProjectedFeaturePixels = asfloat(Node.FeatureRadiusBits) * ProjectionScale / Distance;
+				WantsMoreDetail = ProjectedFeaturePixels > SplitThresholdPixels;
+				if (IsBlockNode && WantsMoreDetail && (IsInternal || IsBlockProxy))
+				{
+					RecordBlock(BlockId);
+				}
+
+				if (IsBlockProxy && WantsMoreDetail)
+				{
+					ProxyBlockId = Node.FirstChild;
+					if (ProxyBlockId < BlockAddressCapacity && BlockResidency[ProxyBlockId] != 0xffffffffu)
+					{
+						ReplaceProxyWithRoot = true;
+						RecordBlock(ProxyBlockId);
+					}
+					else if (CanGrowFrontier)
+					{
+						RequestMissingBlock(ProxyBlockId);
+					}
+				}
+				else if (IsInternal && ChildCount > 0u && WantsMoreDetail)
+				{
+					ChildrenResident = true;
+					for (uint ChildOffset = 0u; ChildOffset < ChildCount; ++ChildOffset)
+					{
+						const uint ChildIndex = Node.FirstChild + ChildOffset;
+						FTreeGPUNode ChildNode;
+						if (IsBlockNode)
+						{
+							ChildNode = BlockNodes[BlockBase + ChildIndex];
+						}
+						else
+						{
+							ChildNode = TreeNodes[ChildIndex];
+						}
+						const uint ChildPage = ChildNode.PackedPageAddress >> 16u;
+						RecordPage(ChildPage);
+						if (ChildPage >= PageAddressCapacity || PageResidency[ChildPage] == 0xffffffffu)
+						{
+							ChildrenResident = false;
+							RequestMissingPage(ChildPage);
+						}
+					}
+					ExtraCount = ChildrenResident ? ChildCount - 1u : 0u;
+					if (!ChildrenResident)
+					{
+						InterlockedOr(OutputCountAndOverflow[3], 1u);
+					}
+				}
+			}
+		}
+	}
+
+	GroupExpansionPrefix[GroupThreadId.x] = ExtraCount;
+	GroupMemoryBarrierWithGroupSync();
+	for (uint Offset = 1u; Offset < THREADGROUP_SIZE; Offset <<= 1u)
+	{
+		const uint Addend = GroupThreadId.x >= Offset
+			? GroupExpansionPrefix[GroupThreadId.x - Offset]
+			: 0u;
+		GroupMemoryBarrierWithGroupSync();
+		GroupExpansionPrefix[GroupThreadId.x] += Addend;
+		GroupMemoryBarrierWithGroupSync();
+	}
+	const uint InclusiveExtra = GroupExpansionPrefix[GroupThreadId.x];
+	const uint ExclusiveExtra = InclusiveExtra - ExtraCount;
+	const uint GroupExtraCount = GroupExpansionPrefix[THREADGROUP_SIZE - 1u];
+	if (GroupThreadId.x == 0u)
+	{
+		GroupExpansionBase = 0u;
+		GroupExpansionGranted = 0u;
+		if (GroupExtraCount > 0u)
+		{
+			uint ObservedCount = OutputCountAndOverflow[0];
+			for (;;)
+			{
+				const uint AvailableCount = ObservedCount < OutputCapacity
+					? OutputCapacity - ObservedCount
+					: 0u;
+				uint GrantedCount = 0u;
+				for (uint ThreadIndex = 0u; ThreadIndex < THREADGROUP_SIZE; ++ThreadIndex)
+				{
+					const uint CandidateCount = GroupExpansionPrefix[ThreadIndex];
+					if (CandidateCount <= AvailableCount)
+					{
+						GrantedCount = CandidateCount;
+					}
+					else
+					{
+						break;
+					}
+				}
+				if (GrantedCount == 0u)
+				{
+					InterlockedOr(OutputCountAndOverflow[1], 1u);
+					break;
+				}
+
+				uint OriginalCount = 0u;
+				InterlockedCompareExchange(
+					OutputCountAndOverflow[0], ObservedCount, ObservedCount + GrantedCount, OriginalCount);
+				if (OriginalCount == ObservedCount)
+				{
+					GroupExpansionBase = ObservedCount;
+					GroupExpansionGranted = GrantedCount;
+					if (GrantedCount < GroupExtraCount)
+					{
+						InterlockedOr(OutputCountAndOverflow[1], 1u);
+					}
+					break;
+				}
+				ObservedCount = OriginalCount;
+			}
+		}
+	}
+	GroupMemoryBarrierWithGroupSync();
+
+	if (!IsActive)
+	{
+		return;
+	}
+	if (IsTerminal)
+	{
+		WritePageAddress(InputIndex, EncodedNodeIndex,
+			EncodedNodeIndex & ~FRONTIER_TERMINAL_FLAG, true);
+		return;
+	}
+	if (MissingBlock)
+	{
+		OutputFrontier[InputIndex] = EncodedNodeIndex;
+		OutputPhysicalIndices[InputIndex] = InputPhysicalIndices[InputIndex];
+		return;
+	}
+	if (IsBlockProxy)
+	{
+		if (ReplaceProxyWithRoot)
+		{
+			const uint ProxyBlockBase = BlockResidency[ProxyBlockId];
+			const FTreeGPUNode BlockRoot = BlockNodes[ProxyBlockBase];
+			WriteOutputNode(InputIndex, EncodeBlockNode(ProxyBlockId, 0u), BlockRoot);
+			InterlockedOr(OutputCountAndOverflow[3], 1u);
+		}
+		else if (WantsMoreDetail && CanGrowFrontier)
+		{
+			WriteOutputNode(InputIndex, EncodedNodeIndex, Node);
+		}
+		else if (AllowThresholdTerminalization != 0u || !CanGrowFrontier)
+		{
+			WritePageAddress(InputIndex, EncodedNodeIndex, Node.PackedPageAddress, true);
+		}
+		else
+		{
+			WriteOutputNode(InputIndex, EncodedNodeIndex, Node);
+		}
+		return;
+	}
+
+	const uint ChildCount = Node.ChildCountAndFlags & 0xffffu;
+	const bool IsInternal = (Node.ChildCountAndFlags & TREE_NODE_INTERNAL_FLAG) != 0u;
+	if (IsInternal && ChildCount > 0u && WantsMoreDetail && ChildrenResident)
+	{
+		const uint ExtraBase = GroupExpansionBase + ExclusiveExtra;
+		const bool FitsBudget = InclusiveExtra <= GroupExpansionGranted;
+		if (FitsBudget)
+		{
+			for (uint ChildOffset = 0u; ChildOffset < ChildCount; ++ChildOffset)
+			{
+				const uint ChildIndex = Node.FirstChild + ChildOffset;
+				FTreeGPUNode ChildNode;
+				if (IsBlockNode)
+				{
+					ChildNode = BlockNodes[BlockBase + ChildIndex];
+				}
+				else
+				{
+					ChildNode = TreeNodes[ChildIndex];
+				}
+				const uint OutputIndex = ChildOffset == 0u
+					? InputIndex
+					: ExtraBase + ChildOffset - 1u;
+				WriteOutputNode(
+					OutputIndex,
+					IsBlockNode ? EncodeBlockNode(BlockId, ChildIndex) : ChildIndex,
+					ChildNode);
+			}
+			InterlockedOr(OutputCountAndOverflow[3], 1u);
+			return;
+		}
+		InterlockedOr(OutputCountAndOverflow[1], 1u);
+		WritePageAddress(InputIndex, EncodedNodeIndex, Node.PackedPageAddress, true);
+		return;
+	}
+
+	if (!IsInternal || ChildCount == 0u ||
+		(AllowThresholdTerminalization != 0u && !WantsMoreDetail))
+	{
+		WritePageAddress(InputIndex, EncodedNodeIndex, Node.PackedPageAddress, true);
+	}
+	else
+	{
+		WriteOutputNode(InputIndex, EncodedNodeIndex, Node);
+	}
+}
