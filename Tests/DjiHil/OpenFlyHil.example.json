@@ -1,0 +1,66 @@
+{
+  "SettingsVersion": 1.2,
+  "SimMode": "Multirotor",
+  "ClockType": "ScalableClock",
+  "ClockSpeed": 1.0,
+  "ApiServerPort": 41451,
+  "ViewMode": "FlyWithMe",
+  "CameraDirector": {
+    "FollowDistance": -12.0,
+    "X": -12.0,
+    "Y": 3.0,
+    "Z": -8.0,
+    "Pitch": -15.0,
+    "Roll": 0.0,
+    "Yaw": 0.0
+  },
+  "OriginGeopoint": {
+    "Latitude": 22.542813,
+    "Longitude": 113.958902,
+    "Altitude": 0.0
+  },
+  "Vehicles": {
+    "Dji1": {
+      "VehicleType": "DjiHil",
+      "AutoCreate": true,
+      "DefaultVehicleState": "Disarmed",
+      "AllowAPIAlways": false,
+      "EnableCollisions": true,
+      "DjiHil": {
+        "Backend": "OpenFlyAndroid",
+        "UdpBindAddress": "0.0.0.0",
+        "UdpPort": 30020,
+        "AndroidReplyPort": 30021,
+        "FrameTcpBindAddress": "0.0.0.0",
+        "FrameTcpPort": 30022,
+        "PeerTimeoutMs": 1000,
+        "HeartbeatIntervalMs": 250,
+        "FrameWidth": 1440,
+        "FrameHeight": 1080,
+        "FrameFormat": "JPEG",
+        "JpegQuality": 92,
+        "MaximumFrameBytes": 16777216,
+        "FrameCameraName": "front_custom",
+        "MaximumFrameRate": 30
+      },
+      "Cameras": {
+        "front_custom": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.1,
+          "Roll": 0.0,
+          "Pitch": 0.0,
+          "Yaw": 0.0,
+          "CaptureSettings": [
+            {
+              "ImageType": 0,
+              "Width": 1440,
+              "Height": 1080,
+              "FOV_Degrees": 68.6365
+            }
+          ]
+        }
+      }
+    }
+  }
+}

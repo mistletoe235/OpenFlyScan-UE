@@ -1,0 +1,178 @@
+diff --git a/rust/build-lod/src/main.rs b/rust/build-lod/src/main.rs
+index e752e44..16b3d4b 100644
+--- a/rust/build-lod/src/main.rs
++++ b/rust/build-lod/src/main.rs
+@@ -67,6 +67,7 @@ struct BuildLodOptions {
+     cluster_sh: Option<usize>,
+     cluster_sh_cpu: bool,
+     cluster_sh_f16: Option<bool>,
++    source_id_sidecar: bool,
+ }
+ 
+ fn read_file_chunks(filename: &str, decoder: &mut impl ChunkReceiver) -> anyhow::Result<()> {
+@@ -96,7 +97,19 @@ fn process_file_lod(filename: &str, options: &BuildLodOptions) {
+     }
+ }
+ 
+-fn process_file_lod_tsplat<TS: SplatReceiver + TsplatArray + SplatGetter>(filename: &str, options: &BuildLodOptions, splats: TS) {
++trait SourceIdProvider {
++    fn source_ids(&self) -> Option<&[u64]>;
++}
++
++impl SourceIdProvider for GsplatArray {
++    fn source_ids(&self) -> Option<&[u64]> { Some(self.source_ids()) }
++}
++
++impl SourceIdProvider for CsplatArray {
++    fn source_ids(&self) -> Option<&[u64]> { None }
++}
++
++fn process_file_lod_tsplat<TS: SplatReceiver + TsplatArray + SplatGetter + SourceIdProvider>(filename: &str, options: &BuildLodOptions, splats: TS) {
+     let mut decoder = MultiDecoder::new(splats, None, Some(&filename));
+     let mut splats = match read_file_chunks(&filename, &mut decoder) {
+         Ok(_) => {
+@@ -239,6 +252,27 @@ fn process_file_lod_tsplat<TS: SplatReceiver + TsplatArray + SplatGetter>(filena
+ 
+     chunk_tree::chunk_tree(&mut splats, 0, |s| println!("{}", s));
+ 
++    if options.source_id_sidecar {
++        let source_ids = splats.source_ids().unwrap_or_else(|| {
++            eprintln!("--source-id-sidecar requires --gsplat");
++            std::process::exit(2);
++        });
++        let filename_ext = format!("{}.source_ids.bin", output_filename);
++        let mut writer = BufWriter::new(File::create(&filename_ext).unwrap());
++        let leaf_count = source_ids.iter().filter(|&&id| id != u64::MAX).count() as u64;
++        writer.write_all(b"NGSSID1\0").unwrap();
++        writer.write_all(&1u32.to_le_bytes()).unwrap();
++        writer.write_all(&0u32.to_le_bytes()).unwrap();
++        writer.write_all(&(source_ids.len() as u64).to_le_bytes()).unwrap();
++        writer.write_all(&leaf_count.to_le_bytes()).unwrap();
++        writer.write_all(&(input_splat_count as u64).to_le_bytes()).unwrap();
++        for source_id in source_ids {
++            writer.write_all(&source_id.to_le_bytes()).unwrap();
++        }
++        writer.flush().unwrap();
++        println!("Wrote {} ({} nodes, {} source leaves)", filename_ext, source_ids.len(), leaf_count);
++    }
++
+     let chunk_duration = start_time.elapsed();
+     description.insert("chunk_duration".to_string(), serde_json::Number::from_f64(chunk_duration.as_secs_f64()).into());
+ 
+@@ -411,6 +445,7 @@ fn show_usage_exit() {
+     eprintln!("  [--max-box=<x>,<y>,<z>]                         // Crop input file to maximum bounding coord");
+     eprintln!("  [--within-dist=<x>,<y>,<z>,<radius>]            // Crop input file to within radius of a point");
+     eprintln!("  [--skip-validate]                               // Skip validation of input file");
++    eprintln!("  [--source-id-sidecar]                          // Write final-node to original-input ID mapping (gsplat only)");
+     eprintln!("  [--inflate]                                     // Inflate scales to output normal splat opacity 0..1");
+     eprintln!("  [--cluster-sh[=<iterations>]]                   // Cluster SH coefficients into <=64K codebook (default 10 iterations)");
+     eprintln!("  [--cluster-sh-cpu[=<iterations>]]               // Cluster SH coefficients using CPU");
+@@ -552,6 +587,11 @@ fn main() {
+             println!("Using --within-dist={:?}", options.within_dist);
+             continue;
+         }
++        if arg == "--source-id-sidecar" {
++            options.source_id_sidecar = true;
++            println!("Using --source-id-sidecar: Write original source IDs");
++            continue;
++        }
+         if arg == "--skip-validate" {
+             options.skip_validate = true;
+             println!("Using --skip-validate: Skip validation of input file");
+diff --git a/rust/spark-lib/src/gsplat.rs b/rust/spark-lib/src/gsplat.rs
+index 2f68ecf..f0005a9 100644
+--- a/rust/spark-lib/src/gsplat.rs
++++ b/rust/spark-lib/src/gsplat.rs
+@@ -231,6 +231,7 @@ pub struct GsplatArray {
+     pub sh1: Vec<GsplatSH1>,
+     pub sh2: Vec<GsplatSH2>,
+     pub sh3: Vec<GsplatSH3>,
++    pub source_ids: Vec<u64>,
+ }
+ 
+ impl TsplatArray for GsplatArray {
+@@ -246,6 +247,7 @@ impl TsplatArray for GsplatArray {
+             sh1: Vec::with_capacity(if max_sh_degree >= 1 { capacity } else { 0 }),
+             sh2: Vec::with_capacity(if max_sh_degree >= 2 { capacity } else { 0 }),
+             sh3: Vec::with_capacity(if max_sh_degree >= 3 { capacity } else { 0 }),
++            source_ids: Vec::with_capacity(capacity),
+         }
+     }
+ 
+@@ -406,6 +408,7 @@ impl TsplatArray for GsplatArray {
+ 
+         self.splats.push(Gsplat::new(center, opacity, rgb, scales, quaternion));
+         self.children.push(indices.iter().copied().collect());
++        self.source_ids.push(u64::MAX);
+ 
+         if self.max_sh_degree >= 1 {
+             let mut total = [Vec3A::ZERO; 3];
+@@ -486,6 +489,8 @@ impl TsplatArray for GsplatArray {
+         let keep: Vec<bool> = self.splats.iter_mut().map(|splat| f(splat)).collect();
+         let mut bits = keep.iter();
+         self.splats.retain(|_splat| *bits.next().unwrap());
++        let mut bits = keep.iter();
++        self.source_ids.retain(|_source_id| *bits.next().unwrap());
+         if !self.children.is_empty() {
+             let mut bits = keep.iter();
+             self.children.retain(|_children| *bits.next().unwrap());
+@@ -516,6 +521,8 @@ impl TsplatArray for GsplatArray {
+             .collect();
+         let mut bits = keep.iter();
+         self.splats.retain(|_splat| *bits.next().unwrap());
++        let mut bits = keep.iter();
++        self.source_ids.retain(|_source_id| *bits.next().unwrap());
+         if !self.children.is_empty() {
+             let mut bits = keep.iter();
+             self.children.retain(|_children| *bits.next().unwrap());
+@@ -538,6 +545,7 @@ impl TsplatArray for GsplatArray {
+         assert_eq!(index_map.len(), self.splats.len());
+         let swaps = compute_swaps(index_map);
+         apply_swaps(&mut self.splats, &swaps);
++        apply_swaps(&mut self.source_ids, &swaps);
+         if !self.children.is_empty() {
+             apply_swaps(&mut self.children, &swaps);
+         }
+@@ -554,6 +562,7 @@ impl TsplatArray for GsplatArray {
+ 
+     fn truncate(&mut self, count: usize) {
+         self.splats.truncate(count);
++        self.source_ids.truncate(count);
+         if !self.children.is_empty() {
+             self.children.truncate(count);
+         }
+@@ -572,6 +581,7 @@ impl TsplatArray for GsplatArray {
+         Self {
+             max_sh_degree: self.max_sh_degree,
+             splats: index_map.iter().map(|&i| self.splats[i].clone()).collect(),
++            source_ids: index_map.iter().map(|&i| self.source_ids[i]).collect(),
+             children: if !self.children.is_empty() {
+                 index_map.iter().map(|&i| self.children[i].clone()).collect()
+             } else {
+@@ -599,6 +609,7 @@ impl TsplatArray for GsplatArray {
+         Self {
+             max_sh_degree: self.max_sh_degree,
+             splats: self.splats[start..start + count].to_vec(),
++            source_ids: self.source_ids[start..start + count].to_vec(),
+             children: if self.children.is_empty() { Vec::new() } else { self.children[start..start + count].to_vec() },
+             sh1: if self.sh1.is_empty() { Vec::new() } else { self.sh1[start..start + count].to_vec() },
+             sh2: if self.sh2.is_empty() { Vec::new() } else { self.sh2[start..start + count].to_vec() },
+@@ -608,6 +619,10 @@ impl TsplatArray for GsplatArray {
+ }
+ 
+ impl GsplatArray {
++    pub fn source_ids(&self) -> &[u64] {
++        &self.source_ids
++    }
++
+     pub fn new() -> Self {
+         Self::new_capacity(0, 0)
+     }
+@@ -731,6 +746,7 @@ impl SplatReceiver for GsplatArray {
+     fn init_splats(&mut self, init: &SplatInit) -> anyhow::Result<()> {
+         self.max_sh_degree = init.max_sh_degree;
+         self.splats.resize_with(init.num_splats, Default::default);
++        self.source_ids = (0..init.num_splats as u64).collect();
+ 
+         self.sh1.clear();
+         if self.max_sh_degree >= 1 {

@@ -1,0 +1,8 @@
+{
+  "license": "MIT",
+  "patch": "spark_stable_source_ids.patch",
+  "patch_feature": "--source-id-sidecar",
+  "source_commit": "f22236f95fdd8078f0c12e3aab479523d401daf6",
+  "source_repository": "sparkjsdev/spark",
+  "source_version": "v2.1.0"
+}
