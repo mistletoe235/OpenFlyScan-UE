@@ -13,7 +13,8 @@ RUNTIME_ROOT="$(realpath -m -- "$1")"
 
 BUNDLE="${RUNTIME_ROOT}/NanoGSConverter"
 mkdir -p -- "${BUNDLE}/Tools/NanoGSTreeBuilder/build" \
-  "${BUNDLE}/Tools/NanoGSPageBuilder" "${BUNDLE}/Config/NanoGS"
+  "${BUNDLE}/Tools/NanoGSPageBuilder" "${BUNDLE}/Config/NanoGS" \
+  "${RUNTIME_ROOT}/LICENSES"
 for module in \
   build_nanogs_tree_v2.py \
   build_nanogs_tree_v3.py \
@@ -34,6 +35,8 @@ cp -a -- "${PROJECT_ROOT}/Tools/NanoGSPageBuilder/nanogs_page_builder.py" \
 cp -a -- "${PROJECT_ROOT}/Config/NanoGS/active_scene.json" "${BUNDLE}/Config/NanoGS/active_scene.json"
 cp -a -- "${PROJECT_ROOT}/Tests/DjiHil/OpenFlyHil.example.json" "${BUNDLE}/Config/OpenFlyHil.json"
 cp -a -- "${PROJECT_ROOT}/Tools/NanoGSPackageConverter/"*.sh "${RUNTIME_ROOT}/"
+cp -a -- "${PROJECT_ROOT}/LICENSE" "${PROJECT_ROOT}/THIRD_PARTY_NOTICES.md" "${RUNTIME_ROOT}/"
+cp -a -- "${PROJECT_ROOT}/LICENSES/." "${RUNTIME_ROOT}/LICENSES/"
 chmod 0755 "${RUNTIME_ROOT}/"*.sh "${BUNDLE}/Tools/NanoGSTreeBuilder/build/build-lod"
 
 echo "NANOGS_CONVERTER_OK root=${RUNTIME_ROOT}"

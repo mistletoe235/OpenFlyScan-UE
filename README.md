@@ -118,3 +118,9 @@ See [Docs/OPEN_SOURCE_DISTRIBUTION_CN.md](Docs/OPEN_SOURCE_DISTRIBUTION_CN.md)
 for the Chinese release notes, [Docs/HIL_PERFORMANCE_CN.md](Docs/HIL_PERFORMANCE_CN.md)
 for the final measured HIL snapshot, and
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for bundled dependencies.
+
+## License
+
+Original OpenFlySplat work is released under the
+[Apache License 2.0](LICENSE). Bundled third-party code and assets remain under
+the licenses listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
