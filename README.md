@@ -2,14 +2,15 @@
 
 OpenFlySplat UE is a standalone Unreal Engine 5.5 project for Gaussian-splat
 rendering and AirSim-based flight/HIL experiments on Linux. It does not depend
-on CARLA and does not include a scene PLY, generated NanoGS pages, or a default
-environment.
+on CARLA and does not include a scene PLY, generated NanoGS pages, or CARLA
+environment assets.
 
 ## What is in this repository
 
 - A compilable UE 5.5 C++ project and the NanoGS renderer source.
 - The AirSim runtime code and the flight/camera assets needed by the simulator.
-- One 7 KB, data-free runtime map. It contains no point cloud or environment.
+- One data-free runtime map with engine-native sky, sunlight, and skylight. It
+  contains no point cloud or external environment assets.
 - Two PLY workflows: direct editor import and scalable paged Tree conversion.
 - Reproducible scripts for the Linux editor build and downloadable package.
 
@@ -50,8 +51,11 @@ For a small or medium model, use Unreal's normal UI:
 4. Drag the resulting Gaussian Splat asset into the runtime map.
 
 This path is implemented by the NanoGS UE asset factory and does not invoke a
-script. It keeps the complete model in one UE asset, so it is intended for
-interactive preview rather than multi-gigabyte scenes.
+script. It keeps the complete model resident in one UE asset. Very large inputs
+may automatically reduce SH order to remain below UE's 2 GiB per-array limit;
+the default 10-million-splat frame budget also prevents a single RHI working
+buffer from exceeding UE's 4 GiB limit. Use the paged workflow below when full
+SH order, bounded residency, or spatial LOD is required.
 
 For a large model, first build the pinned Spark helper and then run the scalable
 import. It builds a content-addressed paged Tree, imports only its lightweight

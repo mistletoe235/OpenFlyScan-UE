@@ -12,9 +12,9 @@
 
 ## 为什么源码工程仍然有少量 Content
 
-`Content/NanoGS/Template/NanoGS_Runtime.umap` 是 UE 启动和 Cook 所需的空地图，
-大小约 7 KB，不包含点云、贴图或环境。除此之外项目级 `Content/` 不需要任何
-资产。运行时碰撞底板使用 UE 引擎自带 Cube。
+`Content/NanoGS/Template/NanoGS_Runtime.umap` 是 UE 启动和 Cook 所需的数据空地图，
+只包含引擎原生的天空大气、太阳光和天空光，不含点云、贴图或外部环境资产。
+除此之外项目级 `Content/` 不需要任何资产。运行时碰撞底板使用 UE 引擎自带 Cube。
 
 `Plugins/AirSim/Content/` 不是默认环境，而是飞行仿真需要的无人机模型、相机、
 HUD、传感器材质和碰撞特效。AirSim 的汽车、天气、天气菜单和示例地图均已删除；
@@ -25,7 +25,9 @@ Blueprint 开始，只递归带入这些 Blueprint 实际引用的依赖。
 
 编辑器快速直导不需要脚本：打开 Content Browser，点击 Import，选择二进制
 little-endian 3DGS PLY，在 NanoGS 对话框选择 SH 阶数，然后把生成的资产拖进
-空地图。这条路径使用 UE 原生资产 Factory，适合小中型数据和快速查看。
+默认地图。这条路径使用 UE 原生资产 Factory。超大输入在单个数据数组超过 UE
+2 GiB 上限时会提示降低 SH 阶数；默认每帧最多处理 1000 万 splat，避免工作 Buffer
+越过 UE RHI 的 4 GiB 上限。需要完整 SH、受控常驻内存或空间 LOD 时使用分页路径。
 
 多 GB 数据使用分页 Tree 路径：
 

@@ -9,7 +9,7 @@
 /Plugins/*/Saved/
 
 # Generated Gaussian data and local input
-/Content/NanoGSData/
+/Content/NanoGSData
 /Content/NanoGS/Template/ActiveScene_TreeSource.uasset
 /Data/
 *.ply
