@@ -1,5 +1,7 @@
 # OpenFlyScan UE
 
+[Project home](https://github.com/mistletoe235/OpenFlyScan) · [Source repository](https://github.com/mistletoe235/OpenFlyScan-UE) · [Simulator downloads](https://huggingface.co/datasets/IPEC-COMMUNITY/openflyscan/tree/main/HIL-simulator)
+
 OpenFlyScan UE is a standalone Unreal Engine 5.5 project for Gaussian-splat
 rendering and AirSim-based flight/HIL experiments on Linux. It does not depend
 on CARLA and does not include a scene PLY, generated NanoGS pages, or CARLA
@@ -20,7 +22,7 @@ unchanged for build/package compatibility. See [release versioning](Docs/RELEASE
   is required just to open the scene. Use `--preview` for software-only SimpleFlight.
   The HIL and renderer panels use English labels.
 - **Connect DJI hardware:** follow [Android HIL setup](Docs/HIL_QUICKSTART.md)
-  ([中文](Docs/HIL_QUICKSTART_CN.md)), then run `./run_openfly_hil.sh` in the same
+  ([Chinese guide](Docs/HIL_QUICKSTART_CN.md)), then run `./run_openfly_hil.sh` in the same
   directory, or connect to the HIL session already opened by `run_expo_east.sh`.
   Close any software-only preview before starting HIL.
 - **Use your own scene:** run the packaged PLY converter described below.

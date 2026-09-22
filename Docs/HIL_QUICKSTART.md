@@ -49,8 +49,8 @@ Open the app's **UE HIL** panel and choose either:
 
 | Mode | Steps |
 | --- | --- |
-| Android hotspot / Android 热点直连 | Enable the phone hotspot, connect the PC to it, then start HIL in the app. Discovery uses UDP; do not hard-code a hotspot gateway address. |
-| Existing LAN / 已有局域网 | Join the same LAN on phone and PC, enter the PC's LAN IP as the UE address, then start HIL. |
+| Android hotspot | Enable the phone hotspot, connect the PC to it, then start HIL in the app. Discovery uses UDP; do not hard-code a hotspot gateway address. |
+| Existing LAN | Join the same LAN on phone and PC, enter the PC's LAN IP as the UE address, then start HIL. |
 
 Keep the default UDP port **30020** and image TCP port **30022** unless both
 ends are configured differently. Starting HIL attempts to start/adopt the DJI
@@ -86,7 +86,7 @@ do not expose it to the public Internet.
 
 | Symptom | Check |
 | --- | --- |
-| Waiting for phone / 等待手机连接 | Same network, correct UE LAN IP, UDP 30020/30021, and hotspot/client isolation. |
+| Waiting for phone | Same network, correct UE LAN IP, UDP 30020/30021, and hotspot/client isolation. |
 | Image online, waiting for DJI Simulator | Network works. Check aircraft/remote USB connection and simulator state in the app. |
 | Pose online, no image | Phone TCP 30022 listener, firewall and UE camera-source selection. UE connects to the phone, not the reverse. |
 | Two UE windows or port-in-use error | Close the software preview or another HIL process before launching again. |
