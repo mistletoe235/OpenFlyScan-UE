@@ -1,0 +1,34 @@
+{
+  "SettingsVersion": 1.2,
+  "SimMode": "Multirotor",
+  "ClockType": "ScalableClock",
+  "ClockSpeed": 1.0,
+  "LogMessagesVisible": false,
+  "ApiServerPort": 41451,
+  "ViewMode": "FlyWithMe",
+  "CameraDirector": {
+    "FollowDistance": -12.0,
+    "X": -12.0,
+    "Y": 3.0,
+    "Z": -8.0,
+    "Pitch": -15.0,
+    "Roll": 0.0,
+    "Yaw": 0.0
+  },
+  "Vehicles": {
+    "PreviewDrone": {
+      "VehicleType": "SimpleFlight",
+      "AutoCreate": true,
+      "DefaultVehicleState": "Disarmed",
+      "EnableCollisions": true,
+      "RC": {"RemoteControlID": -1, "AllowAPIWhenDisconnected": true},
+      "Cameras": {
+        "front_custom": {
+          "X": 0.0, "Y": 0.0, "Z": 0.1,
+          "Pitch": 0.0, "Roll": 0.0, "Yaw": 0.0,
+          "CaptureSettings": [{"ImageType": 0, "Width": 1440, "Height": 1080, "FOV_Degrees": 68.6365}]
+        }
+      }
+    }
+  }
+}

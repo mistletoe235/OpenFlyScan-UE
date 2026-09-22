@@ -1,0 +1,410 @@
+[
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/NanoGS.Build.cs",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatComponent.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/PLYFileReader.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatRenderData.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatSceneProxy.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatViewExtension.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/NanoGS.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianDataTypes.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianClusterTypes.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianGlobalAccumulator.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianClusterBuilder.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatAsset.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatActor.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatRenderer.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatShaders.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSTreeSelector.h",
+    "earliest_recorded_addition": "3bbf33bdea0c77a489122e66b2c2880a3da43b2b 2026-08-20 feat(nanogs): select resident-safe tree frontiers"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSSpatialLODFormat.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSSpatialLODSelector.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSTreeFormat.h",
+    "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSPageFormat.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSSceneBudget.h",
+    "earliest_recorded_addition": null
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSCaptureReadiness.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSPagedSourceAsset.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSTreeGPUData.h",
+    "earliest_recorded_addition": null
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSSpatialLODSourceAsset.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSPageDemandSelector.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSPageReader.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSPagedRenderData.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSTreeReader.h",
+    "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSSpatialLODReader.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSTreeV3Reader.h",
+    "earliest_recorded_addition": null
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSTreeSourceAsset.h",
+    "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSPageResidentPool.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSValidatedLODSelector.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianGlobalAccumulator.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/PLYFileReader.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatActor.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/NanoGS.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianClusterBuilder.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatViewExtension.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatRenderData.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatComponent.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatSceneProxy.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/NanoGSRHICompat.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatAsset.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatRenderer.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatShaders.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSTreeSelector.cpp",
+    "earliest_recorded_addition": "3bbf33bdea0c77a489122e66b2c2880a3da43b2b 2026-08-20 feat(nanogs): select resident-safe tree frontiers"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSPagedSourceAsset.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSSpatialLODSourceAsset.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSSceneBudget.cpp",
+    "earliest_recorded_addition": null
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSSpatialLODSelector.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSTreeV3Reader.cpp",
+    "earliest_recorded_addition": null
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSCaptureReadiness.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSPagedRenderData.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSTreeReader.cpp",
+    "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSTreeGPUData.cpp",
+    "earliest_recorded_addition": null
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSValidatedLODSelector.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSPageDemandSelector.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSPageReader.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSTreeSourceAsset.cpp",
+    "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSSpatialLODReader.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSPageDemandSelectorTests.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSTreeSelectorTests.cpp",
+    "earliest_recorded_addition": "3bbf33bdea0c77a489122e66b2c2880a3da43b2b 2026-08-20 feat(nanogs): select resident-safe tree frontiers"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSSceneBudgetTests.cpp",
+    "earliest_recorded_addition": null
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSTreeGPUDataTests.cpp",
+    "earliest_recorded_addition": null
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSExactHQFrontierTransitionTests.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSValidatedLODSelectorTests.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSPageResidentPoolTests.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Tests/NanoGSSpatialLODSelectorTests.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Tests/NanoGSSpatialLODSourceAssetTests.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGS/Private/Tests/NanoGSSpatialLODReaderTests.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/NanoGSEditor.Build.cs",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Public/GaussianSplatAssetFactory.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Public/NanoGSEditorModule.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Public/Paged/NanoGSTreeSourceAssetFactory.h",
+    "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Public/Paged/NanoGSPagedSourceAssetFactory.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Public/Paged/NanoGSSpatialLODSourceAssetFactory.h",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatThumbnailRenderer.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/NanoGSEditorMouseInputCoalescer.cpp",
+    "earliest_recorded_addition": null
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/ActorFactoryGaussianSplat.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatAssetTypeActions.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatAssetTypeActions.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/NanoGSEditorMouseInputCoalescer.h",
+    "earliest_recorded_addition": null
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/ActorFactoryGaussianSplat.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/NanoGSEditorModule.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatAssetFactory.cpp",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatThumbnailRenderer.h",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/Paged/NanoGSTreeSourceAssetFactory.cpp",
+    "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/Paged/NanoGSSpatialLODSourceAssetFactory.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/Paged/NanoGSPagedSourceAssetFactory.cpp",
+    "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming"
+  },
+  {
+    "path": "Plugins/NanoGS/Shaders/Private/GaussianSplatting.ush",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Shaders/Private/PrepareIndirectArgs.usf",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Shaders/Private/GlobalAccumulatorPrefixSum.usf",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Shaders/Private/CalcViewData.usf",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Shaders/Private/SphericalHarmonics.ush",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Shaders/Private/CompactSplats.usf",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Shaders/Private/GaussianDataTypes.ush",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Shaders/Private/GaussianSplatRendering.usf",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Shaders/Private/CalcDistances.usf",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Shaders/Private/GaussianSplatComposite.usf",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  },
+  {
+    "path": "Plugins/NanoGS/Shaders/Private/ClusterCulling.usf",
+    "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project"
+  }
+]

@@ -5,13 +5,16 @@ PROJECT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 cd -- "${PROJECT_ROOT}"
 
 [[ -f OpenFlySplatUE.uproject ]]
+[[ -f LICENSE ]]
+[[ -f LICENSES/Mozilla-Public-License-2.0.txt ]]
+[[ -f Docs/THIRD_PARTY_SOURCES.md ]]
 [[ -f Content/NanoGS/Template/NanoGS_Runtime.umap ]]
 [[ ! -e Content/Carla ]]
 [[ ! -e Plugins/Carla ]]
 [[ ! -e Plugins/AirSim/Content/VehicleAdv ]]
 [[ ! -e Plugins/AirSim/Content/Weather ]]
 [[ ! -e Plugins/AirSim/Content/HUDAssets/OptionsMenu.uasset ]]
-rg -F 'Formats.Add(TEXT("ply;PLY Gaussian Splatting File"));' \
+grep -F 'Formats.Add(TEXT("ply;PLY Gaussian Splatting File"));' \
   Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatAssetFactory.cpp >/dev/null
 
 find_release_files() {
@@ -25,7 +28,7 @@ find_release_files() {
     -prune -o -type f -print
 }
 
-if find_release_files | rg -i '\.(ply|rad|radc|ngsp|ngst|ngstree)$' -m 1; then
+if find_release_files | grep -Ei '\.(ply|rad|radc|ngsp|ngst|ngstree)$'; then
   echo "Generated scene data is present in the release tree." >&2
   exit 1
 fi
@@ -35,10 +38,10 @@ done | grep -q .; then
   echo "A file larger than 100 MiB is present in the release tree." >&2
   exit 1
 fi
-if rg -n "(/Game/Carla|Plugins/Carla|CarlaUnreal|CARLAGS_UE_ROOT)" \
+if grep -RnIE "(/Game/Carla|Plugins/Carla|CarlaUnreal|CARLAGS_UE_ROOT)" \
   Config Content Plugins/NanoGS/Source Plugins/AirSim/Source Scripts Tools Tests \
-  --glob '!**/Binaries/**' --glob '!**/Intermediate/**' \
-  --glob '!verify_release_tree.sh'; then
+  --exclude-dir=Binaries --exclude-dir=Intermediate --exclude-dir=build --exclude-dir=spark-src \
+  --exclude=verify_release_tree.sh; then
   echo "A stale CARLA project dependency remains." >&2
   exit 1
 fi

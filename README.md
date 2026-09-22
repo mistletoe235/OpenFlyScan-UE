@@ -1,9 +1,35 @@
-# OpenFlySplat UE
+# OpenFlyScan UE
 
-OpenFlySplat UE is a standalone Unreal Engine 5.5 project for Gaussian-splat
+OpenFlyScan UE is a standalone Unreal Engine 5.5 project for Gaussian-splat
 rendering and AirSim-based flight/HIL experiments on Linux. It does not depend
 on CARLA and does not include a scene PLY, generated NanoGS pages, or CARLA
-environment assets.
+environment assets. A separate **Expo East demo package** includes a converted
+scene and opens without a PLY conversion step; scene data stays outside this Git
+repository.
+
+This is the simulator component of OpenFlyScan. Source stays in this repository;
+scene-inclusive binaries and GS assets belong in the OpenFlyScan HF dataset.
+Existing project filenames, C++ module names and `OPENFLYSPLAT_UE_ROOT` remain
+unchanged for build/package compatibility. See [release versioning](Docs/RELEASE_VERSIONING.md).
+
+## Start here
+
+- **Try Expo East:** extract the scene-inclusive Linux package, open its
+  `Linux/OpenFlySplatUE` directory, and run `./run_expo_east.sh`. This opens the
+  scene with the HIL monitor, waiting for a phone connection. No phone or aircraft
+  is required just to open the scene. Use `--preview` for software-only SimpleFlight.
+  The HIL and renderer panels use English labels.
+- **Connect DJI hardware:** follow [Android HIL setup](Docs/HIL_QUICKSTART.md)
+  ([中文](Docs/HIL_QUICKSTART_CN.md)), then run `./run_openfly_hil.sh` in the same
+  directory, or connect to the HIL session already opened by `run_expo_east.sh`.
+  Close any software-only preview before starting HIL.
+- **Use your own scene:** run the packaged PLY converter described below.
+- **Develop the renderer:** build this source project with UE 5.5.
+
+The downloadable runtime needs Linux x86-64, Vulkan SM6 and a compatible
+GPU/driver; it does **not** require an installed UE editor. Python/NumPy are needed
+only when converting another PLY. The Expo East demo uses an RTX 4090 as its
+reference system; its minimum GPU memory requirement has not been established.
 
 ## What is in this repository
 
@@ -80,6 +106,9 @@ PLY beside the package:
 ./Scripts/package_linux.sh /path/to/empty/output
 ```
 
+For a separate scene-inclusive release, see
+[Expo East demo assembly](Docs/EXPO_EAST_DEMO.md).
+
 After extracting the Release artifact, the recipient runs:
 
 ```bash
@@ -93,9 +122,13 @@ For Android HIL:
 ./run_openfly_hil.sh --settings NanoGSConverter/Config/OpenFlyHil.json
 ```
 
-The default HIL profile uses UDP ports 30020/30021 for control and telemetry,
-TCP port 30022 for JPEG frames, 1440x1080 JPEG quality 92, and a 30 FPS producer
-limit. Change the bundled JSON for another host or port allocation.
+The default HIL profile receives Android pose/session messages on UE UDP 30020,
+replies to Android UDP 30021, and connects to the Android TCP 30022 listener to
+send JPEG frames. It uses 1440x1080 JPEG quality 92 with a 30 FPS producer limit.
+The phone supports hotspot discovery or an explicit UE LAN address. Full device
+setup, UI steps, port directions, and troubleshooting are in the
+[HIL quickstart](Docs/HIL_QUICKSTART.md). No DJI hardware is needed for the
+separate Expo East software-only preview.
 
 The retained upstream AirSim `OpticalFlow`/`OpticalFlowVis` post-process
 materials are not compatible with UE 5.5 Vulkan SM6 and fall back to the
@@ -125,6 +158,10 @@ for the final measured HIL snapshot, and
 
 ## License
 
-Original OpenFlySplat work is released under the
+Original OpenFlyScan work is released under the
 [Apache License 2.0](LICENSE). Bundled third-party code and assets remain under
 the licenses listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+See [source/runtime licensing](Docs/LICENSING.md) for the separate Unreal Engine
+terms and the retained-header provenance review. New Linux packages include
+[Eigen source and license notices](Docs/THIRD_PARTY_SOURCES.md).

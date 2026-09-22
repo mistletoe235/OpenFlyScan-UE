@@ -16,7 +16,7 @@
 
 namespace
 {
-constexpr float WindowWidth = 390.0f;
+constexpr float WindowWidth = 470.0f;
 constexpr float ExpandedHeight = 310.0f;
 constexpr float MinimizedHeight = 42.0f;
 const FLinearColor PanelColor(0.025f, 0.035f, 0.055f, 0.94f);
@@ -71,7 +71,7 @@ TSharedRef<SWidget> UOpenFlyHilMonitorWidget::RebuildWidget()
                         SAssignNew(StatusText, STextBlock)
                         .Font(FCoreStyle::GetDefaultFontStyle(TEXT("Regular"), 10))
                         .ColorAndOpacity(WaitingColor)
-                        .Text(FText::FromString(TEXT("正在启动")))
+                        .Text(FText::FromString(TEXT("Starting")))
                     ]
                     + SHorizontalBox::Slot()
                     .AutoWidth()
@@ -207,7 +207,7 @@ void UOpenFlyHilMonitorWidget::RefreshStatus()
     FOpenFlyHilMonitorSnapshot Snapshot;
     if (!DjiHilPawnSimApi::GetActiveOpenFlyMonitorSnapshot(Snapshot)) {
         if (StatusText.IsValid()) {
-            StatusText->SetText(FText::FromString(TEXT("等待 OpenFly 后端")));
+            StatusText->SetText(FText::FromString(TEXT("Waiting for backend")));
             StatusText->SetColorAndOpacity(WaitingColor);
         }
         return;
@@ -237,32 +237,32 @@ void UOpenFlyHilMonitorWidget::RefreshStatus()
             - static_cast<double>(Snapshot.LastValidPacketHostNs)) / 1000000.0);
     if (StatusText.IsValid()) {
         if (!Snapshot.bPeerConnected) {
-            StatusText->SetText(FText::FromString(TEXT("等待手机连接")));
+            StatusText->SetText(FText::FromString(TEXT("Waiting for phone")));
             StatusText->SetColorAndOpacity(WaitingColor);
         }
         else if (!Snapshot.bFrameClientConnected) {
             StatusText->SetText(FText::FromString(Snapshot.LastPoseSequence == 0
-                ? TEXT("等待 DJI Simulator · 图像未连接")
-                : TEXT("姿态在线 · 图像未连接")));
+                ? TEXT("Waiting for simulator / video")
+                : TEXT("Pose online / no video")));
             StatusText->SetColorAndOpacity(WaitingColor);
         }
         else if (Snapshot.LastPoseSequence == 0) {
-            StatusText->SetText(FText::FromString(TEXT("图像在线 · 等待 DJI Simulator")));
+            StatusText->SetText(FText::FromString(TEXT("Video online / no simulator")));
             StatusText->SetColorAndOpacity(WaitingColor);
         }
         else {
-            StatusText->SetText(FText::FromString(TEXT("运行正常")));
+            StatusText->SetText(FText::FromString(TEXT("Connected")));
             StatusText->SetColorAndOpacity(HealthyColor);
         }
     }
     if (ConnectionText.IsValid())
         ConnectionText->SetText(FText::FromString(FString::Printf(
-            TEXT("连接  %s   Session %llu   新鲜度 %.0f ms"),
+            TEXT("Peer  %s   Session %llu   Packet age %.0f ms"),
             Snapshot.bPeerConnected ? *Snapshot.PeerIp : TEXT("--"),
             Snapshot.SessionId, FreshnessMs)));
     if (PoseText.IsValid())
         PoseText->SetText(FText::FromString(FString::Printf(
-            TEXT("姿态  %.1f Hz   Seq %llu   FC age %u ms"),
+            TEXT("Pose  %.1f Hz   Seq %llu   FC age %u ms"),
             PoseRateHz, Snapshot.LastPoseSequence, Snapshot.FlightControllerStateAgeMs)));
     if (TransformText.IsValid())
         TransformText->SetText(FText::FromString(FString::Printf(
@@ -270,28 +270,28 @@ void UOpenFlyHilMonitorWidget::RefreshStatus()
             Snapshot.EastM, Snapshot.NorthM, Snapshot.UpM)));
     if (AttitudeText.IsValid())
         AttitudeText->SetText(FText::FromString(FString::Printf(
-            TEXT("姿态  R %.1f°   P %.1f°   H %.1f°   云台 %.1f°"),
+            TEXT("Attitude  R %.1f°   P %.1f°   H %.1f°   Gimbal %.1f°"),
             Snapshot.RollDeg, Snapshot.PitchDeg,
             Snapshot.HeadingDeg, Snapshot.GimbalPitchDeg)));
     if (ControlText.IsValid()) {
         const bool bMotorStarted = (Snapshot.StateFlags & 1u) != 0;
         const bool bInTheAir = (Snapshot.StateFlags & 2u) != 0;
         ControlText->SetText(FText::FromString(FString::Printf(
-            TEXT("飞控  %s%s   摇杆 F %.2f R %.2f U %.2f Y %.1f°/s"),
-            bMotorStarted ? TEXT("电机启动") : TEXT("电机停止"),
-            bInTheAir ? TEXT(" · 飞行中") : TEXT(" · 地面"),
+            TEXT("%s / %s\nControl  F %.2f R %.2f U %.2f Y %.1f°/s"),
+            bMotorStarted ? TEXT("Motors on") : TEXT("Motors off"),
+            bInTheAir ? TEXT("Airborne") : TEXT("On ground"),
             Snapshot.CommandForwardMps, Snapshot.CommandRightMps,
             Snapshot.CommandUpMps, Snapshot.CommandYawRateDegPerSec)));
         ControlText->SetColorAndOpacity(bInTheAir ? HealthyColor : PrimaryText);
     }
     if (FrameText.IsValid())
         FrameText->SetText(FText::FromString(FString::Printf(
-            TEXT("图像  %ux%u %s   %.1f / %u fps   %.1f Mbps"),
+            TEXT("Video  %ux%u %s   %.1f / %u fps   %.1f Mbps"),
             Snapshot.FrameWidth, Snapshot.FrameHeight, *Snapshot.FrameFormat,
             FrameRateHz, Snapshot.MaximumFrameRate, MegabitsPerSecond)));
     if (SafetyText.IsValid()) {
         SafetyText->SetText(FText::FromString(FString::Printf(
-            TEXT("安全  EVENT %llu   拒绝 %llu   非法 %llu   断链 %llu   捕获失败 %llu"),
+            TEXT("Events %llu   Rejected %llu   Invalid %llu\nLink losses %llu   Capture failures %llu"),
             Snapshot.SentEventCount, Snapshot.RejectedPacketCount,
             Snapshot.InvalidDatagramCount, Snapshot.LinkLossCount,
             Snapshot.CaptureFailureCount)));

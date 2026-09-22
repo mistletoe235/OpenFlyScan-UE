@@ -102,7 +102,7 @@ TSharedRef<SWidget> UNanoGSControlWidget::RebuildWidget()
 						SAssignNew(StatusText, STextBlock)
 						.Font(FCoreStyle::GetDefaultFontStyle(TEXT("Regular"), 10))
 						.ColorAndOpacity(WaitingColor)
-						.Text(FText::FromString(TEXT("等待场景")))
+                        .Text(FText::FromString(TEXT("Waiting for scene")))
 					]
 					+ SHorizontalBox::Slot().AutoWidth()
 					[
@@ -134,7 +134,7 @@ TSharedRef<SWidget> UNanoGSControlWidget::RebuildWidget()
 				]
 				+ SVerticalBox::Slot().AutoHeight().Padding(12.0f, 4.0f)
 				[
-					MakeRow(TEXT("强制完整 LOD0"),
+					MakeRow(TEXT("Force full LOD0"),
 						SNew(SCheckBox)
 						.IsChecked(TAttribute<ECheckBoxState>::Create(
 							TAttribute<ECheckBoxState>::FGetter::CreateUObject(
@@ -144,7 +144,7 @@ TSharedRef<SWidget> UNanoGSControlWidget::RebuildWidget()
 				]
 				+ SVerticalBox::Slot().AutoHeight().Padding(12.0f, 4.0f)
 				[
-					MakeRow(TEXT("稳定预算（百万）"),
+					MakeRow(TEXT("Static budget (M)"),
 						SNew(SNumericEntryBox<float>)
 						.MinValue(0.1f).MaxValue(30.0f).AllowSpin(false)
 						.MinDesiredValueWidth(90.0f)
@@ -156,7 +156,7 @@ TSharedRef<SWidget> UNanoGSControlWidget::RebuildWidget()
 				]
 				+ SVerticalBox::Slot().AutoHeight().Padding(12.0f, 4.0f)
 				[
-					MakeRow(TEXT("移动预算（百万）"),
+					MakeRow(TEXT("Moving budget (M)"),
 						SNew(SNumericEntryBox<float>)
 						.MinValue(0.0f).MaxValue(30.0f).AllowSpin(false)
 						.MinDesiredValueWidth(90.0f)
@@ -168,7 +168,7 @@ TSharedRef<SWidget> UNanoGSControlWidget::RebuildWidget()
 				]
 				+ SVerticalBox::Slot().AutoHeight().Padding(12.0f, 4.0f)
 				[
-					MakeRow(TEXT("LOD 细节倍率（×）"),
+					MakeRow(TEXT("LOD detail scale"),
 						SNew(SNumericEntryBox<float>)
 						.MinValue(0.1f).MaxValue(4.0f).AllowSpin(false)
 						.MinDesiredValueWidth(90.0f)
@@ -206,7 +206,7 @@ TSharedRef<SWidget> UNanoGSControlWidget::RebuildWidget()
 					[
 						SNew(STextBlock)
 						.Font(FCoreStyle::GetDefaultFontStyle(TEXT("Regular"), 9))
-						.Text(FText::FromString(TEXT("恢复推荐默认")))
+						.Text(FText::FromString(TEXT("Restore defaults")))
 					]
 				]
 			]
@@ -310,7 +310,7 @@ void UNanoGSControlWidget::RefreshStatus()
 	{
 		if (StatusText.IsValid())
 		{
-			StatusText->SetText(FText::FromString(TEXT("等待场景")));
+			StatusText->SetText(FText::FromString(TEXT("Waiting for scene")));
 			StatusText->SetColorAndOpacity(WaitingColor);
 		}
 		return;
@@ -318,13 +318,13 @@ void UNanoGSControlWidget::RefreshStatus()
 	if (StatusText.IsValid())
 	{
 		StatusText->SetText(FText::FromString(Component->bForceFullDetailLOD0
-			? TEXT("完整 LOD0") : TEXT("动态 LOD")));
+			? TEXT("Full LOD0") : TEXT("Dynamic LOD")));
 		StatusText->SetColorAndOpacity(HealthyColor);
 	}
 	if (DetailStatusText.IsValid())
 	{
 		DetailStatusText->SetText(FText::FromString(FString::Printf(
-			TEXT("当前 %d splats · %s\n%s"),
+			TEXT("Active %d splats · %s\n%s"),
 			Component->ActiveSplats, *Component->ResidentPages, *Component->TreeLODStatus)));
 	}
 }
