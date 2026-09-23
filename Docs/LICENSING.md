@@ -19,8 +19,8 @@ the Unreal Editor or the project's `NanoGSEditor` module. UE runtime binaries
 remain subject to Epic's terms; the project's source license does not relicense
 them. The standalone PLY converter uses Python and the Spark helper.
 
-Packages include dependency notices and the exact bundled Eigen headers under
-`THIRD_PARTY_SOURCES/`; see [source availability](THIRD_PARTY_SOURCES.md).
+Dependency notices and the exact Eigen headers are provided in the source
+repository and alongside the existing HF package; see [source availability](THIRD_PARTY_SOURCES.md).
 The Expo East scene has its own CC BY 4.0 license in the HF release. Neither
 that scene license nor Apache-2.0 is a blanket license for the compiled runtime.
 

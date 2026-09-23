@@ -6,21 +6,18 @@ The public component name is **OpenFlyScan UE**. The source project filename
 
 ## Expo East Linux package
 
-The current HF distribution is `OpenFlyScan-HIL-ExpoEast-Linux-v0.1.1.tar.zst`
-under `HIL-simulator/linux/v0.1.1/`. It adds complete dependency notices, Eigen
-source availability and the scene license to the existing Expo East runtime.
-The executable and scene data are unchanged from v0.1.0; this is a packaging
-update, not a new renderer build.
+The HF distribution remains `OpenFlyScan-HIL-ExpoEast-Linux-v0.1.0.tar.zst`
+under `HIL-simulator/linux/v0.1.0/`. Its archive, executable, scene and checksum
+are unchanged. Updated license notices and the Eigen source archive are provided
+alongside the existing package in HF; no replacement runtime download is needed.
 
 The runtime's original manifest records source base
 `66506d2637480aff6324bc7d9d5989bca122f883` plus the English-UI build updates.
-The new distribution manifest preserves that binary provenance and records the
-separate packaging source commit, archive size and checksum. Do not attribute
-the existing binary to a later documentation commit.
+That binary provenance is retained. A later source or documentation commit does
+not become the source revision of the existing executable.
 
 ## Future releases
 
-Build new runtime versions from a recorded source revision, keep engine binaries
-and large scenes outside source Git, and publish the archive with its manifest
-and checksum. Use a new version whenever archive contents change; retain the
-checksums of older versions.
+Use a new version whenever runtime archive contents change, and publish its
+manifest and checksum together. Documentation and license attachments can be
+updated separately without changing a versioned runtime archive.

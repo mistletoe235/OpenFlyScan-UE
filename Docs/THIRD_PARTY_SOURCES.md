@@ -1,16 +1,15 @@
-# Source availability in the Linux package
+# Eigen source availability
 
-The packaged runtime includes `THIRD_PARTY_SOURCES/eigen3.tar.gz`, containing the
-exact Eigen headers copied from this project's AirLib dependency when the package
-was assembled. Extract the archive to obtain that source, including its original
-copyright and license notices. The MPL-2.0 text is provided in
-[LICENSES/Mozilla-Public-License-2.0.txt](../LICENSES/Mozilla-Public-License-2.0.txt).
+The exact Eigen headers used by the Expo East runtime are included in this
+repository at `Plugins/AirSim/Source/AirLib/deps/eigen3`. They are unchanged
+from the initial standalone import used by the packaged runtime.
 
-The source repository also carries these headers at
-`Plugins/AirSim/Source/AirLib/deps/eigen3`. The archive is a source distribution,
-not a separately licensed binary or an assertion that all project code is MPL.
+For the existing Linux v0.1.0 download, the same headers are also provided as
+[a separate source archive](https://huggingface.co/datasets/IPEC-COMMUNITY/openflyscan/resolve/main/HIL-simulator/linux/v0.1.0/THIRD_PARTY_SOURCES/eigen3.tar.gz).
+Download and extract it to obtain the source and original copyright notices.
+This attachment does not alter the existing runtime archive. The MPL-2.0 text
+is in [Mozilla-Public-License-2.0.txt](../LICENSES/Mozilla-Public-License-2.0.txt).
 
-Other bundled third-party license notices are in
-[THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md). The package's `SHA256SUMS`
-records its delivered files. This packaging change applies to newly assembled
-packages; it does not update previously uploaded archives.
+The packaging script includes `THIRD_PARTY_SOURCES/eigen3.tar.gz` inside newly
+assembled packages. Preserve the applicable source and notices when redistributing.
+Other dependency licenses are in [third-party notices](../THIRD_PARTY_NOTICES.md).
