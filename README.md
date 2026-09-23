@@ -4,7 +4,7 @@ Part of [OpenFlyScan](https://github.com/mistletoe235/OpenFlyScan) ·
 [Paper](https://arxiv.org/abs/2609.24253) ·
 [Citation](https://github.com/mistletoe235/OpenFlyScan#citation)
 
-[Project home](https://github.com/mistletoe235/OpenFlyScan) · [Source repository](https://github.com/mistletoe235/OpenFlyScan-UE) · [Simulator downloads](https://huggingface.co/datasets/IPEC-COMMUNITY/openflyscan/tree/main/HIL-simulator)
+[Project home](https://github.com/mistletoe235/OpenFlyScan) · [Source repository](https://github.com/mistletoe235/OpenFlyScan-UE) · [Simulator download status](https://github.com/mistletoe235/OpenFlyScan/blob/main/docs/simulator.md)
 
 OpenFlyScan UE is a standalone Unreal Engine 5.5 project for Gaussian-splat
 rendering and AirSim-based flight/HIL experiments on Linux. It does not depend
