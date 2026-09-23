@@ -1,0 +1,782 @@
+{
+  "review_date": "2026-09-23",
+  "upstream_repository": "https://github.com/TimChen1383/NanoGaussianSplatting",
+  "upstream_commit": "075e7cee956958b22bce2593b03f01bb3961fd8a",
+  "upstream_license": "MIT",
+  "counts": {
+    "upstream": 49,
+    "legacy_extension": 43,
+    "standalone_extension": 10
+  },
+  "files": [
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/NanoGS.Build.cs",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "9b383a52196dc1ccdd893456a5ff152701fa217867a00f69698b9e917efc5fa9",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/NanoGS.Build.cs",
+      "upstream_sha256": "2b2100a6d8681fe4cd6074e4d689e55a5e14e355e4d93935415bd2ec11b6164a",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatComponent.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "361a18c4b2eee4496b9d63cec2e028e374cfe8d73051ed3f5124a5931f2d3b73",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatComponent.h",
+      "upstream_sha256": "3607cf47b8e9c7f3cd0e619e4fc21fe8a9168b4ff3289d638fcd43bcc045e3f7",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/PLYFileReader.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "5a6ab06b82c107a6fa5e51d253a1e8438b0c72e897f050c9233436e58b12d301",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/PLYFileReader.h",
+      "upstream_sha256": "fe1c3c7ae0ae8e4d76fef068b4e42416e9ecec7b4944aa16a651c959bae0a258",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatRenderData.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "050f87d0b0c8d2cbf5f43cfe5a6402848330afa07c169e6ad61cce622c1560ae",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatRenderData.h",
+      "upstream_sha256": "d9aa3ccc3262184691930be21c978fd801e32355bf0d022cc9ccfbfec88701c8",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatSceneProxy.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "c7965cf2ac41a0235fb89b57e10df595467c300185cbd5661841f292c9951008",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatSceneProxy.h",
+      "upstream_sha256": "2881cc9492a35b057e836fbfbbb4a3e73d93d02dfccba39bda1d5c8d18e6f22f",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatViewExtension.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "54c4cbb9e399898594a607076e58deec4cf755a2390cf16195dab3dc2604f9b0",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatViewExtension.h",
+      "upstream_sha256": "3d260354024c8e5477cc075715817348109a73428afe4ed38e4befca0a2d97c3",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/NanoGS.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "a3013433b77fd922dbe55ba13cabdcd0017e27ce01b4d2f347a5a74f9fb09f6e",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/NanoGS.h",
+      "upstream_sha256": "1b319797081344bf0d510d40c37a615c40c75b8afc15fa27bce37f80986f1f4d",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianDataTypes.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "fa730fb1cc5e96faba76d38791b117ef4355320aadd1bacdfebacd5febbfc497",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianDataTypes.h",
+      "upstream_sha256": "eef2f0db369db6225aeefa33de936ae8aa5290b836ae661cd013d995ac75ae6f",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianClusterTypes.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "2da10ee30c4af2bb9099ee866385cba1a6bcd891262a506f18e9711dd6d865de",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianClusterTypes.h",
+      "upstream_sha256": "2da10ee30c4af2bb9099ee866385cba1a6bcd891262a506f18e9711dd6d865de",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianGlobalAccumulator.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "6274316b83faf5eba4223b0f07267d7511a5cb66aa6054852bb001103abf1bf4",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianGlobalAccumulator.h",
+      "upstream_sha256": "ca8d4f26a0e3d5fca5e009271103ef88588978648ddcf1b06d4a2ec81cc94d03",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianClusterBuilder.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "6cf7746ea61a90e767d9df5470fe5eea0a55869e9768806330c3f18c462ffae0",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianClusterBuilder.h",
+      "upstream_sha256": "1e80176c5df84f4b4606b9eeea28f6a45cbb74678d5e47cdfa88f662605aa488",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatAsset.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "799585502b865aaeb35026f11b33b73e91b822ae24ee9e5c5773569f20741d38",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatAsset.h",
+      "upstream_sha256": "493a5d0cf6c16f1dc4475496951da490a380a77c30f5114458fcbe94e66937cd",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatActor.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "87b872b0aa42e8fa3ff11ae94e66236a348a62fdc470d2ae201696d5d762f0ed",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatActor.h",
+      "upstream_sha256": "87b872b0aa42e8fa3ff11ae94e66236a348a62fdc470d2ae201696d5d762f0ed",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatRenderer.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "77d17e33bdecbbad1376fd870bee9caeb48dfdb03dcc9f39046634f31214d682",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatRenderer.h",
+      "upstream_sha256": "341aef6f7b290695c67a96534340b3dc7008aca2a6594ed8b7196a30f1226319",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatShaders.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "5037083cb99b6423e0330811b0d1d4d359dce13c2333d9c6f562bc95869b2449",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Public/GaussianSplatShaders.h",
+      "upstream_sha256": "9d5e812ef3acbbe4ac5b1df937ee6b24a80792f8cb43813089dc587902f77b88",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSTreeSelector.h",
+      "earliest_recorded_addition": "3bbf33bdea0c77a489122e66b2c2880a3da43b2b 2026-08-20 feat(nanogs): select resident-safe tree frontiers",
+      "local_sha256": "ca83e8097d3470924b210a0f9d03fe366ad3c08057a239376b7c601435c9e992",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSSpatialLODFormat.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "f95636a9141779509eb2e7b2f47668d9872721fd269b2630d7eda94fcf0c46fc",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSSpatialLODSelector.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "666793fdb3e5c05e81a4e715615da25185c243eb17c1466bdbce2864e1e91dcf",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSTreeFormat.h",
+      "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources",
+      "local_sha256": "55790a31f78f0b269098ff1a7b5e52997d7fed244a9c8c3f3002a993a7802e0b",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSPageFormat.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "07625cc2ef606bbce8aeadad40838b23ecd3737a285989cbc1e551811f02bbec",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSSceneBudget.h",
+      "earliest_recorded_addition": null,
+      "local_sha256": "8cda859808ad64eb7af6325cb9cc0b12b25a5480dc51aca01f35ba466f89f4f9",
+      "origin": "OpenFlyScan standalone extension",
+      "standalone_import": "02fdbeea30afbfe5038848b9de14bfbec791c3aa"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSCaptureReadiness.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "83969410946bbee0d9ed1ae5f40a7e932fde8497a6dd061d38334b6f0bf8482b",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSPagedSourceAsset.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "4619493e80a69626ca35394ea909765b55fa28ae35f03f5188dcbf7327803080",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSTreeGPUData.h",
+      "earliest_recorded_addition": null,
+      "local_sha256": "af48d174a6f0d8b1d6829471ee3af1aeef70e04c200d3a17cd29b027c1c6b268",
+      "origin": "OpenFlyScan standalone extension",
+      "standalone_import": "02fdbeea30afbfe5038848b9de14bfbec791c3aa"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSSpatialLODSourceAsset.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "fd2059bc121164051374706bdbceac0abeb3ee180d950bc9a99198fb2cd3e512",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSPageDemandSelector.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "e7dba5daf73ee30145b93f81db5989b1677dbb65790d240fdd368a17c30742cf",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSPageReader.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "4a16c615096a1ef720d45085cc94263cf4964c42ca953729053fc3725a36ba2e",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSPagedRenderData.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "fd2166611cbe0d3c76bacc4c3e5ae4cbab8f4491a6dd99191c8b812af17acc2d",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSTreeReader.h",
+      "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources",
+      "local_sha256": "9ebdf817ca7a5b3a5a9e94fc31d49a7b07faaa056074b14d7d26df5f4955500d",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSSpatialLODReader.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "cf940dff79cef1fbfe5934d05921ba3458793e46a799b5ce37701d5821c3db17",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSTreeV3Reader.h",
+      "earliest_recorded_addition": null,
+      "local_sha256": "6ba36b12ea9c245fdab8bff89fbbb7f4609bd7eb61c702821a0f1fdc7cafc067",
+      "origin": "OpenFlyScan standalone extension",
+      "standalone_import": "02fdbeea30afbfe5038848b9de14bfbec791c3aa"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSTreeSourceAsset.h",
+      "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources",
+      "local_sha256": "941942a81560c12d609f5a5d8851aa8beec0a88a9a32d5e3b54d7bf31ce085dc",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSPageResidentPool.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "575334f353ca8d21018b21df463a9e188cc2a5f78046b9c2c3cd151f9ff6fd53",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Public/Paged/NanoGSValidatedLODSelector.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "1b6522c1f21a893b9defcd3252d92abfedb1820450fa9e6229eb896b81a0efbb",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianGlobalAccumulator.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "2dd294a10dba5741c45a97aa9a55878992864bc92b353cc631a7fbcee55bc2c7",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianGlobalAccumulator.cpp",
+      "upstream_sha256": "59b49d63c26236869df1aa78d55e41f5415720cd06a8ed0a9bdcb581c1794040",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/PLYFileReader.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "44730d06eaa0344a59fa198ce73dbccb1c1ef27deaa0253e1afd339d1e2e1bab",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Private/PLYFileReader.cpp",
+      "upstream_sha256": "d19b6112748d76750c381d361d6aee72a9f32630d3b5c0e959a8e963c662455a",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatActor.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "f88e12b16c07dbcc9a7c0b39fe34bb1af4b68a28f9cdb235e4c62649886b789b",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatActor.cpp",
+      "upstream_sha256": "f88e12b16c07dbcc9a7c0b39fe34bb1af4b68a28f9cdb235e4c62649886b789b",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/NanoGS.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "94bfcb4dad8e98677c422b793ef521cab6352cb3105defccbc163d958cc534e9",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Private/NanoGS.cpp",
+      "upstream_sha256": "e559d68b0b8c6a9edd4ce75569466d892202aed3f8ef43a52a9c6decfa044ae7",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianClusterBuilder.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "6c2c4880d072cb19e7b410fbeaa7dcba4a3f94c4c1218aa6f6d1fc024e6a1c37",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianClusterBuilder.cpp",
+      "upstream_sha256": "71284209b07c06e6281d3457d4bbea98364f29991770582723f3adb7e0548ba6",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatViewExtension.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "1de20fc252a32ec682b5a6e62defa8e0623a219aa664b4d74fbfda407d7388db",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatViewExtension.cpp",
+      "upstream_sha256": "b6f1934d1013b0c73273b4ad450ca73bc049777dabc1751ef36bf5aebeff189b",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatRenderData.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "f5f2a904d33c0f8725e609922cc5d7aa1447719ec38a3a3ae5963d13854fdba8",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatRenderData.cpp",
+      "upstream_sha256": "696b0b2c309c9aedfcb1ee9dad3798c28b6389f35289f6bf362eae60d29af4cf",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatComponent.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "355e59b3bd77270da24bc5ad0ae3cadfffc92e54881be353b79342430d71ddbc",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatComponent.cpp",
+      "upstream_sha256": "8c2ec13ac222c51872d1e1df8286e4950abf7bc92ac6438eeaa8a28a45a383d1",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatSceneProxy.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "c5d60bf60e81ac7770eb699d97ff2f4411f0ca64dd2f9c7b95cfa61a1cf551ca",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatSceneProxy.cpp",
+      "upstream_sha256": "38d0de1381ad20ef21a60d9a60ca3f5e54cbc1b36bac45bdbb802b585ece8689",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/NanoGSRHICompat.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "eb346db3e50cd5fe0150e70164009e4200832f1bed1898405381757a7c225d37",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatAsset.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "fd336ec322b12d91977b383eedd3100fd65b2ca4f22e8c00598982a78d611009",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatAsset.cpp",
+      "upstream_sha256": "53f8d6cbf1c7b268170ff8eae4cc791ed141e963bdc6cbb97200b260a90293ba",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatRenderer.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "d1728d6605a52727aa4dab6f0bce247a65cec38cad0ea6fa33a0b110e3f32c66",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatRenderer.cpp",
+      "upstream_sha256": "83ab56102e972b4aaeced632401b25fedf3e28e4d017e7eadb4b7b53394dffcf",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatShaders.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "a27da9c300859bf82659908e30f374ce1460953f790023fd323b2950a1da3636",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGS/Private/GaussianSplatShaders.cpp",
+      "upstream_sha256": "b4cd6438f0b2dffe160de83e21d19281c224d645cbe507b02a273cd174627f0b",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSTreeSelector.cpp",
+      "earliest_recorded_addition": "3bbf33bdea0c77a489122e66b2c2880a3da43b2b 2026-08-20 feat(nanogs): select resident-safe tree frontiers",
+      "local_sha256": "7ff0b9fc525e508acc375db487dda5b7c3d30d9442071c16b65903fb5ab591f2",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSPagedSourceAsset.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "0f11cf9a7027986afb679c71add41eeed703baa9a3c64cb224196bd4f8821327",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSSpatialLODSourceAsset.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "d66a28f8dad19c031b297e4fbcc97d1940ea9eefbb977ad79ee9fa234e009d74",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSSceneBudget.cpp",
+      "earliest_recorded_addition": null,
+      "local_sha256": "560869d5a97c70e41e224879f1f621a593ed599d63cb6fd3291851d789d7a994",
+      "origin": "OpenFlyScan standalone extension",
+      "standalone_import": "02fdbeea30afbfe5038848b9de14bfbec791c3aa"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSSpatialLODSelector.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "e7fc996140df170e2a9f09bf08f1cb5802f56100e406d205210b398f695e0268",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSTreeV3Reader.cpp",
+      "earliest_recorded_addition": null,
+      "local_sha256": "6648d6a075ec892b0b45152a230efb0eaa7b5c41b4418ded1d6872f5bc4f1466",
+      "origin": "OpenFlyScan standalone extension",
+      "standalone_import": "02fdbeea30afbfe5038848b9de14bfbec791c3aa"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSCaptureReadiness.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "a8574e2bd70dee4e63641320df4fc11ed2212ad96c76eec4ef406e6b28255f7d",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSPagedRenderData.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "2b37b33d2e734677fb32edbe8d71902a94223bf6bb2cf34619883bf825bdbeef",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSTreeReader.cpp",
+      "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources",
+      "local_sha256": "709ab03c28610d1297cfce3512414a6eaeb96c6c5305b3f65609677831811d2b",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSTreeGPUData.cpp",
+      "earliest_recorded_addition": null,
+      "local_sha256": "a9ac2e25c625f20b0b62780c45e0d5eab0b7b4ea0e3a743bd51993fa3ba5deb7",
+      "origin": "OpenFlyScan standalone extension",
+      "standalone_import": "02fdbeea30afbfe5038848b9de14bfbec791c3aa"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSValidatedLODSelector.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "a1eec7f211f6b9e249a3c333daaa662b57777dc36ee5dbcf28dc4346412f4eeb",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSPageDemandSelector.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "aa59ea25593d39572db0e573916dd32db7bd6cc4d04e8384a3bec0512c125c33",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSPageReader.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "e49494865150d4d7c806ba8069023856358184de9bf16153ee331ddf80a41c5b",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSTreeSourceAsset.cpp",
+      "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources",
+      "local_sha256": "79209c2701cdeed2e5ade3cfbe1ce0a480498ea988bb0c37430af66e9041a811",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/NanoGSSpatialLODReader.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "856bc4db601d50e20730759ba769d7049647ec59ef5d18c97d3a09bf94321b0e",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSPageDemandSelectorTests.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "ac4402bfba5b4d115f53839e46ce23f9cae76efa1b708ff88bf5613ff2a43d39",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSTreeSelectorTests.cpp",
+      "earliest_recorded_addition": "3bbf33bdea0c77a489122e66b2c2880a3da43b2b 2026-08-20 feat(nanogs): select resident-safe tree frontiers",
+      "local_sha256": "3c45a01c428276fa72d000e29ccfd9b4bb0750222cbab9560ea5b07766f16c78",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSSceneBudgetTests.cpp",
+      "earliest_recorded_addition": null,
+      "local_sha256": "d50872bc23d5381ed96b4539186cf097275af82f6bb1d0dc38759bd98fc3e21d",
+      "origin": "OpenFlyScan standalone extension",
+      "standalone_import": "02fdbeea30afbfe5038848b9de14bfbec791c3aa"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSTreeGPUDataTests.cpp",
+      "earliest_recorded_addition": null,
+      "local_sha256": "6061704b4cc333ffb83b23c9dc88aecb266a05879cd29111005a91c85a48428c",
+      "origin": "OpenFlyScan standalone extension",
+      "standalone_import": "02fdbeea30afbfe5038848b9de14bfbec791c3aa"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSExactHQFrontierTransitionTests.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "c30ac903974e85a4f48076021dd05386ce436b1c7c100fe82020ccd6d10b044c",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSValidatedLODSelectorTests.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "263be64c82ba421943a900fa3a72a068a9f1cd16bd52e69dfd362828bb118742",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Paged/Tests/NanoGSPageResidentPoolTests.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "9f31b6543e238e64ee2056fbc126a8ba394ee6241e91fa1fbbb5fb98677b7bad",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Tests/NanoGSSpatialLODSelectorTests.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "105a48f13dc81989035a9dca9d6fc552d3720bed69ffed35aa7f991aee54829d",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Tests/NanoGSSpatialLODSourceAssetTests.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "0791f28eefbda103dd4e5a3701af8de29a59c36842a4c5914ca81bb4b03dec4e",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGS/Private/Tests/NanoGSSpatialLODReaderTests.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "62f0059b3669e0aa7a0d19c910d77bdf9967ead812e7f8c79842624a6d3e8d2e",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/NanoGSEditor.Build.cs",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "fd5165f9de35919983591fdabee1a91bb104c9b34555dd04ca8d1acfd5bfd02f",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGSEditor/NanoGSEditor.Build.cs",
+      "upstream_sha256": "3af9e9e1505a79dc11f82a2064c38c1e858fab9f5e67f18171ece02955f678da",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Public/GaussianSplatAssetFactory.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "958df1fb5e1265d864a5b2aac1e964542c0b32d4e2e56bf10a32c2ee578e87c4",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGSEditor/Public/GaussianSplatAssetFactory.h",
+      "upstream_sha256": "6e3c8c0d4f0ea413bacd32bfb39dd628f80e0b91fc746ac5a70667f0c85f32be",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Public/NanoGSEditorModule.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "5fea4733b2d0d7b2264d5a77b1fe0b8f24c3128b286f8c7034f5625c334d73ad",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGSEditor/Public/NanoGSEditorModule.h",
+      "upstream_sha256": "4b7c1a71013eba1fea374760893a7bf75aedd5d280369e18114b2228b334a6e3",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Public/Paged/NanoGSTreeSourceAssetFactory.h",
+      "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources",
+      "local_sha256": "f3c5ab90cfe4809c8e627d11bb3c34b70abe1bc22fa0409def8fb6a51f886484",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Public/Paged/NanoGSPagedSourceAssetFactory.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "644f7e5fbf24173b3948de21665cd19364212d3d7ce186655468a9f336d7fc75",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Public/Paged/NanoGSSpatialLODSourceAssetFactory.h",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "5b0ac2e9ab9e84826d33e06993051a85430d36ab58e7457fe5324ccf4f8a91b3",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatThumbnailRenderer.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "51371bd16e5efa2a123cdc6a29d57bab1fe82f117bd18c70b58fd26403222fd7",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatThumbnailRenderer.cpp",
+      "upstream_sha256": "51371bd16e5efa2a123cdc6a29d57bab1fe82f117bd18c70b58fd26403222fd7",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/NanoGSEditorMouseInputCoalescer.cpp",
+      "earliest_recorded_addition": null,
+      "local_sha256": "d7845bcf048a0e455807f54f1c4bdfcd704395c4ebab7015279bc580497297ae",
+      "origin": "OpenFlyScan standalone extension",
+      "standalone_import": "02fdbeea30afbfe5038848b9de14bfbec791c3aa"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/ActorFactoryGaussianSplat.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "6e14d5b1e6ee313e8a46c9048ab5f06813ea377286436cab032992a783409ad8",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGSEditor/Private/ActorFactoryGaussianSplat.cpp",
+      "upstream_sha256": "6e14d5b1e6ee313e8a46c9048ab5f06813ea377286436cab032992a783409ad8",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatAssetTypeActions.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "9b41da5456973746123df6999eb5b46dc825be21e6f94f85dd427f9115c458bb",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatAssetTypeActions.h",
+      "upstream_sha256": "9b41da5456973746123df6999eb5b46dc825be21e6f94f85dd427f9115c458bb",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatAssetTypeActions.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "1ec92db2e3d91bf22f736f671356b6ef783ef0cdf9fdaf9faf3a67225a790f3e",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatAssetTypeActions.cpp",
+      "upstream_sha256": "1ec92db2e3d91bf22f736f671356b6ef783ef0cdf9fdaf9faf3a67225a790f3e",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/NanoGSEditorMouseInputCoalescer.h",
+      "earliest_recorded_addition": null,
+      "local_sha256": "0d3ae10a4daf82977ed8d567cf447cd27d3da83dc18a4e5565d0a86685c76fc8",
+      "origin": "OpenFlyScan standalone extension",
+      "standalone_import": "02fdbeea30afbfe5038848b9de14bfbec791c3aa"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/ActorFactoryGaussianSplat.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "d0b6bf49d7d20c77a19f7382d3e67ef2f2d0c43f05964c08447cdee171c0789d",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGSEditor/Private/ActorFactoryGaussianSplat.h",
+      "upstream_sha256": "d0b6bf49d7d20c77a19f7382d3e67ef2f2d0c43f05964c08447cdee171c0789d",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/NanoGSEditorModule.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "10b49c65ad38dd6162fe8f0732b147ab40511536697da5a9f0869b5f38418844",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGSEditor/Private/NanoGSEditorModule.cpp",
+      "upstream_sha256": "09ae00068201e325409e8d2682560d008c21fbc0a4f86ef7e598d3b668bf300a",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatAssetFactory.cpp",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "254340152890cc8b4ffa2ba7c406c434065c51a181b0358e31110ecd01893ddf",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatAssetFactory.cpp",
+      "upstream_sha256": "cb93301935e7259909d7c395674af68d987f6ea26d091e0e861da881e9c706d3",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatThumbnailRenderer.h",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "1c23ca890b8083260c50924c5727a5a1af58c98aff808d21956f532627427e20",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Source/NanoGSEditor/Private/GaussianSplatThumbnailRenderer.h",
+      "upstream_sha256": "1c23ca890b8083260c50924c5727a5a1af58c98aff808d21956f532627427e20",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/Paged/NanoGSTreeSourceAssetFactory.cpp",
+      "earliest_recorded_addition": "ae33ddd9adc921077be60f9fe63aaebe5f6727c1 2026-08-20 feat(nanogs): import validated tree v2 sources",
+      "local_sha256": "5728c2985225a994ae3dcf74f211e37bf55528d6add9d4cb11602cfcd82733fb",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/Paged/NanoGSSpatialLODSourceAssetFactory.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "11324c578e5caaf6f41e025afad6c418280f16810dc842f611a018a287dec445",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Source/NanoGSEditor/Private/Paged/NanoGSPagedSourceAssetFactory.cpp",
+      "earliest_recorded_addition": "2404e66db310c1e37c2fc19ad594d1a6585441b6 2026-08-20 feat(nanogs): add paged exact-hq and spatial lod streaming",
+      "local_sha256": "52c240e648338667281928614c175e2ae02ca813ef5b525006c0d60980e546fd",
+      "origin": "CarlaGS/OpenFlyScan extension"
+    },
+    {
+      "path": "Plugins/NanoGS/Shaders/Private/GaussianSplatting.ush",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "06920af13fdcc7764c43911daae3dbe6c9e5e451e2056fd8d0437aea5b3c7af1",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Shaders/Private/GaussianSplatting.ush",
+      "upstream_sha256": "b01b3de8ef0c06aa1df2655b81ab1117c7a0c2c95309e19d219bc6586eda178a",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Shaders/Private/PrepareIndirectArgs.usf",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "4dea36c5343d77a3d8aa887fb609e9c407fe7bd9cc796a150eecead0e3a21a64",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Shaders/Private/PrepareIndirectArgs.usf",
+      "upstream_sha256": "14ce4d522d8a6bc31756ed13d12a9cc1a629e8e6aa47bd16ae5ab34ea696377f",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Shaders/Private/GlobalAccumulatorPrefixSum.usf",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "d4a8290c73bf4d657a5ca6470f1e8de5b2dd3f398c19d7a7452cd1bcefcc1b5e",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Shaders/Private/GlobalAccumulatorPrefixSum.usf",
+      "upstream_sha256": "d4a8290c73bf4d657a5ca6470f1e8de5b2dd3f398c19d7a7452cd1bcefcc1b5e",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Shaders/Private/CalcViewData.usf",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "0b1edbbec9f1db5939504cb946a6fe82dbf45527aa6f80c253b744ab7c677ab1",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Shaders/Private/CalcViewData.usf",
+      "upstream_sha256": "e03d06e092d38dcf81aacf80bfb811a54f50215d65c369d24942d04060c36e61",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Shaders/Private/SphericalHarmonics.ush",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "155a40c289a14da3b2db19b87f58ec01771bcf5f188c6f8f418101611feba64f",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Shaders/Private/SphericalHarmonics.ush",
+      "upstream_sha256": "155a40c289a14da3b2db19b87f58ec01771bcf5f188c6f8f418101611feba64f",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Shaders/Private/CompactSplats.usf",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "df771c13318be8f1a318cafb175097b910301aeae47ce80b7a0fbdc4fe3b59b4",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Shaders/Private/CompactSplats.usf",
+      "upstream_sha256": "df771c13318be8f1a318cafb175097b910301aeae47ce80b7a0fbdc4fe3b59b4",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Shaders/Private/GaussianDataTypes.ush",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "dfbda20010035736a9c9bf049b0297e31d9f103834b3a626385536d2cc4b0649",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Shaders/Private/GaussianDataTypes.ush",
+      "upstream_sha256": "1a9c41fd5d396e3cfcd8f883dd8b44fec98396b35882c4fdde87ea44177a2ee2",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Shaders/Private/GaussianSplatRendering.usf",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "3bb2397118e56849988ef88cb1bb9dbf33f4cda805fb00a01b8576995cdd2584",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Shaders/Private/GaussianSplatRendering.usf",
+      "upstream_sha256": "a48e023d5533346a86c3dad0550f0393764ea4ef43037ce18996178a1131de41",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Shaders/Private/CalcDistances.usf",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "e4e60d439bb2fc5e710435357ccf8affba31da7499f9b50b254ce4a9ba669a17",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Shaders/Private/CalcDistances.usf",
+      "upstream_sha256": "d526f505fed7db187c8b0134a0a5f01679aafe59ea04095c056abc74f76fd25c",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Shaders/Private/GaussianSplatComposite.usf",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "bbfac5a9437f0c3fcefeb38acaae47db9fee553c51a8d7708d793e3e4621f499",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Shaders/Private/GaussianSplatComposite.usf",
+      "upstream_sha256": "4965c21e7f22bc4e5c49fc20f8ee669e196d8964a75101aac513a448f3b4b0ba",
+      "upstream_retains_epic_header": true
+    },
+    {
+      "path": "Plugins/NanoGS/Shaders/Private/ClusterCulling.usf",
+      "earliest_recorded_addition": "b685b0b381ef798432e21e28689b9f126e551c0e 2026-08-12 chore: initialize CarlaGS project",
+      "local_sha256": "92762f2ac341b41bcc2dcb403c4bfd9c5c139da8cc91bc38977db78fccd471eb",
+      "origin": "NanoGaussianSplatting (MIT), with project modifications",
+      "upstream_path": "Plugins/NanoGS/Shaders/Private/ClusterCulling.usf",
+      "upstream_sha256": "0ef17542ca814d0ea39f4b76f02127eb27a2a6290dcbd188486fc9d536d4e8be",
+      "upstream_retains_epic_header": true
+    }
+  ]
+}

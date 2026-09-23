@@ -3,6 +3,11 @@
 The repository-wide Apache License 2.0 applies only to original OpenFlyScan
 work. Bundled third-party components remain under their own licenses.
 
+- **NanoGaussianSplatting / NanoGS**: MIT, Copyright (c) 2026 TimChen. The
+  upstream renderer is [TimChen1383/NanoGaussianSplatting](https://github.com/TimChen1383/NanoGaussianSplatting).
+  Its license is in `LICENSES/NanoGaussianSplatting-MIT.txt` and
+  `Plugins/NanoGS/LICENSE`; source correspondence is recorded in
+  `Docs/NANOGS_SOURCE_PROVENANCE.md`.
 - **AirSim / AirLib / MavLinkCom and AirSim runtime assets**: MIT. The retained
   AirSim/Colosseum license text is in
   `LICENSES/AirSim-Colosseum-MIT.txt`.
@@ -22,7 +27,7 @@ work. Bundled third-party components remain under their own licenses.
 - **Unreal Engine**: installed and licensed separately from original project code.
   Source and packaged distributions must respect Epic's license. Retained Epic
   copyright headers have not been reassigned; see `Docs/NANOGS_SOURCE_PROVENANCE.md`
-  for the remaining source-origin review and `Docs/LICENSING.md` for package scope.
+  for source origins and `Docs/LICENSING.md` for package scope.
 
-This inventory is technical release documentation, not legal advice. Verify
-third-party versions and asset provenance again before a public release.
+Retain these notices and applicable source-availability files when redistributing
+the source or runtime package.

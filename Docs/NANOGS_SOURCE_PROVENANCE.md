@@ -1,28 +1,32 @@
-# NanoGS source provenance review — 2026-09-21
+# NanoGS source provenance
 
-The standalone project began with snapshot commit
-`02fdbeea30afbfe5038848b9de14bfbec791c3aa` on September 4, 2026.
-It is not the earliest history of the renderer.
+Reviewed September 23, 2026. The renderer derives from
+[TimChen1383/NanoGaussianSplatting](https://github.com/TimChen1383/NanoGaussianSplatting),
+which publishes its source under the MIT license. The comparison uses upstream
+commit `075e7cee956958b22bce2593b03f01bb3961fd8a`; its original license is retained
+in [NanoGaussianSplatting-MIT.txt](../LICENSES/NanoGaussianSplatting-MIT.txt)
+and `Plugins/NanoGS/LICENSE`.
 
-A read-only comparison against the earlier CarlaGS development repository found
-102 current source/shader files containing an Epic copyright header:
+## File origins
 
-- 50 paths already occur in the earliest CarlaGS snapshot,
-  `b685b0b381ef798432e21e28689b9f126e551c0e`.
-- 42 paths first appear in subsequent development commits: 32 in `2404e66`,
-  seven in `ae33ddd`, and three in `3bbf33b`.
-- Ten current paths have no same-path addition in that legacy history; renamed
-  project files need separate tracing.
+Of the 102 source/shader files flagged by the earlier header check:
 
-The complete per-file record is in `NANOGS_SOURCE_PROVENANCE_20260921.json`.
-The listed commits belong to the legacy repository, not this repository's Git
-history. Later local additions with the same header are evidence that templates
-may have propagated it, but do not by themselves establish copyright ownership
-or exclude copied code. Likewise, the header alone does not establish that a
-whole file was copied from Epic.
+- **49 files** have corresponding paths in that upstream renderer, with
+  unchanged files and project-specific modifications. The same Epic copyright
+  line is already present in the upstream files; it is not evidence that these
+  files were extracted from a separately licensed Engine source checkout.
+- **43 files** are paging, LOD and related extensions recorded in the
+  earlier CarlaGS development history.
+- **10 files** are standalone project extensions first recorded in
+  import `02fdbeea30afbfe5038848b9de14bfbec791c3aa`, including budget/GPU-tree
+  helpers, tests and the editor mouse-input adapter.
 
-No copyright header was removed. The remaining step is to confirm the origins of
-the initial imported renderer and the renamed files, distinguishing original
-implementation, Epic Examples, Engine Code and any other upstream material.
-Record applicable notices and distribution conditions for each category rather
-than applying the root license to everything.
+[The file record](NANOGS_SOURCE_PROVENANCE_20260923.json) records paths, hashes,
+upstream correspondence and known development commits. Existing copyright
+headers are preserved. The upstream MIT terms continue to cover the imported
+renderer; the root Apache-2.0 license covers original project work.
+
+Unreal Engine is an external build dependency. The source distribution contains
+the project and its plugins, not an Unreal Engine source checkout. Linking UE
+APIs or including installed Engine headers does not add those external files to
+this repository. See [runtime licensing](LICENSING.md) for the packaged product.

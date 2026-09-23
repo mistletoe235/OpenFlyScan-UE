@@ -1,9 +1,9 @@
 # Expo East scene-inclusive package
 
 The source repository stays data-free. The demo is a separate Linux runtime
-distribution with a converted Expo East scene, intended for a downloadable
-artifact such as a Hugging Face dataset repository. Upload is a separate release
-step; preparation does not publish the scene.
+distribution with a converted Expo East scene, available in the
+[OpenFlyScan HF dataset](https://huggingface.co/datasets/IPEC-COMMUNITY/openflyscan).
+The scene uses CC BY 4.0; runtime components retain their own licenses.
 
 ## Assemble from the scene-free runtime
 

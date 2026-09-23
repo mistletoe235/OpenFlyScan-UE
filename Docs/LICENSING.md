@@ -1,40 +1,34 @@
 # Source and runtime licensing
 
-Original OpenFlyScan UE code uses Apache-2.0. AirSim, Spark, Eigen and other
-components retain the licenses in `THIRD_PARTY_NOTICES.md` and `LICENSES/`.
-Unreal Engine itself is licensed separately by Epic; the project license does
-not relicense engine code, binaries or restricted assets.
+Original OpenFlyScan UE work uses Apache-2.0. The imported NanoGaussianSplatting
+renderer uses MIT; AirSim, Spark, Eigen and other dependencies retain the terms
+listed in [third-party notices](../THIRD_PARTY_NOTICES.md). Unreal Engine is
+installed and licensed separately under Epic's EULA.
 
-## Runtime package
+## Source distribution
 
-The recipe builds a game target and invokes cooking without compiling the editor.
-`NanoGSEditor` is an Editor module; the runtime modules do not list UnrealEd as a
-dependency. The standalone PLY converter uses Python and the pinned Spark helper.
-These implementation facts do not replace a review of the actual shipped files
-against Epic's Product and Engine Tools distribution provisions.
+This repository contains project/plugin source, not an Unreal Engine checkout.
+The NanoGS upstream license and file correspondence are recorded in
+[source provenance](NANOGS_SOURCE_PROVENANCE.md). Original upstream headers are
+preserved; the root project license does not replace their MIT terms.
 
-New packages include license notices and the exact bundled Eigen source archive;
-see [source availability](THIRD_PARTY_SOURCES.md). Preserve the archive and
-notices when redistributing. Do not silently replace an existing versioned
-package with changed content; follow [release versioning](RELEASE_VERSIONING.md).
+## Linux runtime
 
-## Retained Epic headers
+The downloadable Expo East package is a cooked game target. It does not include
+the Unreal Editor or the project's `NanoGSEditor` module. UE runtime binaries
+remain subject to Epic's terms; the project's source license does not relicense
+them. The standalone PLY converter uses Python and the Spark helper.
 
-The initial standalone import retained Epic copyright headers in multiple source
-and shader files. No header is removed or reassigned in this pass. Their recorded
-history is summarized in [source provenance](NANOGS_SOURCE_PROVENANCE.md).
-Complete that provenance review before declaring the full source tree available
-under the project's Apache license or distributing any actual Engine Code.
+Packages include dependency notices and the exact bundled Eigen headers under
+`THIRD_PARTY_SOURCES/`; see [source availability](THIRD_PARTY_SOURCES.md).
+The Expo East scene has its own CC BY 4.0 license in the HF release. Neither
+that scene license nor Apache-2.0 is a blanket license for the compiled runtime.
 
-## Epic notices
-
-Retain Epic notices that accompany the Licensed Technology. Where product credits
-are provided, include the notices required by the applicable Unreal Engine EULA:
+## Epic attribution
 
 OpenFlyScan UE uses Unreal® Engine. Unreal® is a trademark or registered trademark
 of Epic Games, Inc. in the United States of America and elsewhere.
 
 Unreal® Engine, Copyright 1998 – 2026, Epic Games, Inc. All rights reserved.
 
-See the [official Unreal Engine EULA](https://www.unrealengine.com/en-US/eula/unreal),
-particularly its Product distribution, Engine Tools and ownership provisions.
+[Unreal Engine EULA](https://www.unrealengine.com/en-US/eula/unreal)
