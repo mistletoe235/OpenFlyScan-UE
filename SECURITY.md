@@ -1,8 +1,10 @@
 # Security and HIL safety
 
-Report security or flight-safety issues privately. A private maintainer contact
-must be configured before public release; do not post credentials, aircraft
-identifiers, precise private locations, images or flight logs in public issues.
+Use [OpenFlyScan Discussions](https://github.com/mistletoe235/OpenFlyScan/discussions)
+to contact the maintainers. For security or flight-safety concerns, start with
+a non-sensitive summary. Discussions are visible to repository readers, not
+private messages; do not post exploit details, credentials, aircraft identifiers,
+account details, private flight locations, images or flight logs.
 
 HIL connections are intended for a trusted LAN or controlled VPN. They are not
 an authenticated public Internet service. Follow the bench precautions in
